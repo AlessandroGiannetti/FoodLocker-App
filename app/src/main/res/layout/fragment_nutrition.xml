@@ -1,0 +1,1189 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        tools:context="com.example.android.navigation.SearchFoodFragment">
+
+    <data>
+
+        <variable
+                name="viewModel"
+                type="com.letsbuildthatapp.foodlocker.ui.nutrition.NutritionViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/nav_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        <com.google.android.material.card.MaterialCardView
+                android:id="@+id/card_day_navigation"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.0">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/diary_navigation_card_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="38dp"
+                    android:background="@color/cardview_background">
+
+                <TextView
+                        android:id="@+id/day_back"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="24sp"
+                        android:textStyle="bold"
+                        android:drawableStart="@drawable/ic_day_backdp"
+                        app:layout_constraintBottom_toTopOf="@+id/divider28"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                        android:id="@+id/day_fw"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="24sp"
+                        android:textStyle="bold"
+                        android:drawableStart="@drawable/ic_day_fwdp"
+                        app:layout_constraintBottom_toTopOf="@+id/divider28"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.0" />
+
+                <View
+                        android:id="@+id/divider27"
+                        android:layout_width="2dp"
+                        android:layout_height="0dp"
+                        android:background="?android:attr/listDivider"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/day_back"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                <View
+                        android:id="@+id/divider18"
+                        android:layout_width="2dp"
+                        android:layout_height="0dp"
+                        android:background="?android:attr/listDivider"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@+id/day_fw"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.0" />
+
+                <View
+                        android:id="@+id/divider28"
+                        android:layout_width="0dp"
+                        android:layout_height="2dp"
+                        android:background="?android:attr/listDivider"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent" />
+
+                <TextView
+                        android:id="@+id/day_selected"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="22sp"
+                        android:layout_marginBottom="4dp"
+                        android:layout_marginStart="8dp"
+                        android:text="@{viewModel.day.date}"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginTop="4dp"
+                        app:layout_constraintBottom_toTopOf="@+id/divider28"
+                        app:layout_constraintEnd_toStartOf="@+id/divider18"
+                        app:layout_constraintStart_toEndOf="@+id/divider27"
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:text="2020-03-16" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <ScrollView
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/card_day_navigation"
+                app:layout_constraintVertical_bias="0.0">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/card"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="8dp"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginStart="8dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/profile_layout_card"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@color/cardview_background">
+
+
+                        <com.github.mikephil.charting.charts.PieChart
+                                android:id="@+id/pie_chart"
+                                android:padding="9dp"
+                                android:layout_width="110dp"
+                                android:layout_height="110dp"
+                                android:layout_marginStart="4dp"
+                                android:layout_marginTop="4dp"
+                                android:layout_marginBottom="8dp"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintHorizontal_bias="0.0"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@+id/all_day_title">
+
+                        </com.github.mikephil.charting.charts.PieChart>
+
+                        <TextView
+                                android:id="@+id/carbohydrates_title"
+                                android:text="@string/carbohydrates"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:textColor="@color/carbo"
+                                android:textSize="14sp"
+                                android:gravity="center"
+                                android:textStyle="bold"
+                                android:layout_marginBottom="16dp"
+                                app:layout_constraintBottom_toBottomOf="@+id/pie_chart"
+                                app:layout_constraintEnd_toStartOf="@+id/fats_title"
+                                app:layout_constraintHorizontal_bias="0.5"
+                                app:layout_constraintStart_toEndOf="@+id/pie_chart" />
+
+                        <TextView
+                                android:id="@+id/fats_title"
+                                android:text="@string/fats"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:textColor="@color/fat"
+                                android:textSize="14sp"
+                                android:layout_marginBottom="16dp"
+                                android:gravity="center"
+                                android:textStyle="bold"
+                                app:layout_constraintBottom_toBottomOf="@+id/pie_chart"
+                                app:layout_constraintEnd_toStartOf="@+id/proteins_title"
+                                app:layout_constraintHorizontal_bias="0.5"
+                                app:layout_constraintStart_toEndOf="@+id/carbohydrates_title" />
+
+                        <TextView
+                                android:id="@+id/proteins_title"
+                                android:text="@string/proteins"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="16dp"
+                                android:textColor="@color/proteins"
+                                android:textSize="14sp"
+                                android:gravity="center"
+                                android:textStyle="bold"
+                                app:layout_constraintBottom_toBottomOf="@+id/pie_chart"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintHorizontal_bias="0.5"
+                                app:layout_constraintStart_toEndOf="@+id/fats_title" />
+
+                        <TextView
+                                android:id="@+id/carbohydrates_val_g"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="8dp"
+
+                                android:textStyle="bold"
+                                android:textSize="16sp"
+                                android:layout_marginStart="16dp"
+                                app:layout_constraintBottom_toTopOf="@+id/carbohydrates_title"
+                                app:layout_constraintEnd_toStartOf="@+id/unit_carb"
+                                app:layout_constraintStart_toStartOf="@+id/carbohydrates_title"
+                                tools:text="0" />
+
+                        <TextView
+                                android:id="@+id/carbohydrates_perc"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="8dp"
+                                android:textSize="16sp"
+
+                                android:layout_marginTop="16dp"
+                                app:layout_constraintBottom_toTopOf="@+id/carbohydrates_val_g"
+                                app:layout_constraintEnd_toEndOf="@+id/carbohydrates_title"
+                                app:layout_constraintStart_toStartOf="@+id/carbohydrates_title"
+                                app:layout_constraintTop_toTopOf="@+id/pie_chart"
+                                tools:text="0 %" />
+
+                        <TextView
+                                android:id="@+id/fats_val_g"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="8dp"
+
+
+                                android:textStyle="bold"
+                                android:textSize="16sp"
+                                android:layout_marginStart="16dp"
+                                app:layout_constraintBottom_toTopOf="@+id/fats_title"
+                                app:layout_constraintEnd_toStartOf="@+id/unit_fat"
+                                app:layout_constraintStart_toStartOf="@+id/fats_title"
+                                tools:text="0" />
+
+                        <TextView
+                                android:id="@+id/fats_perc"
+
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="8dp"
+                                android:layout_marginTop="16dp"
+                                android:textSize="16sp"
+                                app:layout_constraintBottom_toTopOf="@+id/fats_val_g"
+                                app:layout_constraintEnd_toEndOf="@+id/fats_title"
+                                app:layout_constraintStart_toStartOf="@+id/fats_title"
+                                app:layout_constraintTop_toTopOf="@+id/pie_chart"
+                                tools:text="0 %" />
+
+                        <TextView
+                                android:id="@+id/proteins_val_g"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textSize="16sp"
+
+                                android:textStyle="bold"
+                                android:layout_marginBottom="8dp"
+                                android:layout_marginStart="16dp"
+                                app:layout_constraintBottom_toTopOf="@+id/proteins_title"
+                                app:layout_constraintEnd_toStartOf="@+id/unit_pro"
+                                app:layout_constraintStart_toStartOf="@+id/proteins_title"
+                                tools:text="0" />
+
+                        <TextView
+                                android:id="@+id/proteins_perc"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textSize="16sp"
+
+                                android:layout_marginBottom="8dp"
+                                android:layout_marginTop="16dp"
+                                app:layout_constraintBottom_toTopOf="@+id/proteins_val_g"
+                                app:layout_constraintEnd_toEndOf="@+id/proteins_title"
+                                app:layout_constraintStart_toStartOf="@+id/proteins_title"
+                                app:layout_constraintTop_toTopOf="@+id/pie_chart"
+                                tools:text="0 %" />
+
+                        <TextView
+                                android:id="@+id/unit_carb"
+                                android:text="@string/g"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textStyle="bold"
+                                android:textSize="16sp"
+                                android:layout_marginEnd="16dp"
+                                app:layout_constraintBottom_toBottomOf="@+id/carbohydrates_val_g"
+                                app:layout_constraintEnd_toEndOf="@+id/carbohydrates_title"
+                                app:layout_constraintStart_toEndOf="@+id/carbohydrates_val_g"
+                                app:layout_constraintTop_toTopOf="@+id/carbohydrates_val_g" />
+
+                        <TextView
+                                android:id="@+id/unit_pro"
+                                android:text="@string/g"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textStyle="bold"
+                                android:textSize="16sp"
+                                android:layout_marginEnd="16dp"
+                                app:layout_constraintBottom_toBottomOf="@+id/proteins_val_g"
+                                app:layout_constraintEnd_toEndOf="@+id/proteins_title"
+                                app:layout_constraintStart_toEndOf="@+id/proteins_val_g"
+                                app:layout_constraintTop_toTopOf="@+id/proteins_val_g" />
+
+                        <TextView
+                                android:id="@+id/unit_fat"
+                                android:text="@string/g"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textStyle="bold"
+                                android:textSize="16sp"
+                                android:layout_marginEnd="16dp"
+                                app:layout_constraintBottom_toBottomOf="@+id/fats_val_g"
+                                app:layout_constraintEnd_toEndOf="@+id/fats_title"
+                                app:layout_constraintStart_toEndOf="@+id/fats_val_g"
+                                app:layout_constraintTop_toTopOf="@+id/fats_val_g" />
+
+                        <TextView
+                                android:id="@+id/all_day_title"
+                                android:text="@string/all_day_macro"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textSize="19sp"
+                                android:textStyle="bold"
+                                android:layout_marginStart="8dp"
+                                android:layout_marginTop="8dp"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+                <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/card_carbo"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="16dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/card">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/macro_carbo_layout"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@color/cardview_background">
+
+
+                        <TextView
+                                android:id="@+id/carb_title_card"
+                                android:text="@string/carbohydrates"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textSize="19sp"
+                                android:textStyle="bold"
+                                android:layout_marginStart="8dp"
+                                android:layout_marginTop="8dp"
+                                android:layout_marginEnd="8dp"
+                                android:textColor="@color/carbo"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintHorizontal_bias="0.0"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                        <com.github.mikephil.charting.charts.PieChart
+                                android:id="@+id/pie_chart_carbo"
+                                android:padding="9dp"
+                                android:layout_width="110dp"
+                                android:layout_height="110dp"
+                                android:layout_marginStart="4dp"
+                                android:layout_marginBottom="8dp"
+                                android:layout_marginEnd="8dp"
+                                android:layout_marginTop="4dp"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintHorizontal_bias="0.0"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@+id/carb_title_card">
+
+                        </com.github.mikephil.charting.charts.PieChart>
+
+                        <TextView
+                                android:id="@+id/title_b_carb"
+                                android:text="@string/breakfast"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textSize="16sp"
+                                android:gravity="center|center_horizontal|center_vertical"
+                                android:layout_marginTop="4dp"
+                                android:layout_marginStart="4dp"
+                                app:layout_constraintBottom_toTopOf="@+id/divider7"
+                                app:layout_constraintStart_toEndOf="@+id/ind_b_carb"
+                                app:layout_constraintTop_toBottomOf="@+id/carb_title_card" />
+
+                        <TextView
+                                android:id="@+id/title_l_carb"
+                                android:text="@string/lunch"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textSize="16sp"
+                                android:gravity="center|center_horizontal|center_vertical"
+                                android:layout_marginStart="4dp"
+                                app:layout_constraintBottom_toTopOf="@+id/divider8"
+                                app:layout_constraintStart_toEndOf="@+id/ind_l_carb"
+                                app:layout_constraintTop_toBottomOf="@+id/divider7" />
+
+                        <TextView
+                                android:id="@+id/title_d_carb"
+                                android:text="@string/dinner"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textSize="16sp"
+                                android:gravity="center|center_horizontal|center_vertical"
+                                android:layout_marginStart="4dp"
+                                app:layout_constraintBottom_toTopOf="@+id/divider9"
+                                app:layout_constraintStart_toEndOf="@+id/ind_d_carb"
+                                app:layout_constraintTop_toBottomOf="@+id/divider8" />
+
+                        <TextView
+                                android:id="@+id/title_s_carb"
+                                android:text="@string/snack"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textSize="16sp"
+                                android:gravity="center|center_horizontal|center_vertical"
+                                android:layout_marginBottom="8dp"
+                                android:layout_marginStart="4dp"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintStart_toEndOf="@+id/ind_s_carb"
+                                app:layout_constraintTop_toBottomOf="@+id/divider9" />
+
+                        <View
+                                android:id="@+id/divider7"
+                                android:layout_width="0dp"
+                                android:layout_height="1dp"
+                                android:background="?android:attr/listDivider"
+                                app:layout_constraintBottom_toTopOf="@+id/title_l_carb"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintHorizontal_bias="0.5"
+                                app:layout_constraintStart_toEndOf="@+id/pie_chart_carbo"
+                                app:layout_constraintTop_toBottomOf="@+id/title_b_carb" />
+
+                        <View
+                                android:id="@+id/divider8"
+                                android:layout_width="0dp"
+                                android:layout_height="1dp"
+                                android:background="?android:attr/listDivider"
+                                app:layout_constraintBottom_toTopOf="@+id/title_d_carb"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintHorizontal_bias="0.5"
+                                app:layout_constraintStart_toEndOf="@+id/pie_chart_carbo"
+                                app:layout_constraintTop_toBottomOf="@+id/title_l_carb" />
+
+                        <View
+                                android:id="@+id/divider9"
+                                android:layout_width="0dp"
+                                android:layout_height="1dp"
+                                android:background="?android:attr/listDivider"
+                                app:layout_constraintBottom_toTopOf="@+id/title_s_carb"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintHorizontal_bias="0.5"
+                                app:layout_constraintStart_toEndOf="@+id/pie_chart_carbo"
+                                app:layout_constraintTop_toBottomOf="@+id/title_d_carb" />
+
+                        <TextView
+                                android:id="@+id/val_b_carb_g"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginEnd="8dp"
+                                android:gravity="center|center_horizontal|center_vertical"
+                                android:textSize="16sp"
+                                app:layout_constraintBottom_toBottomOf="@+id/title_b_carb"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintTop_toTopOf="@+id/title_b_carb"
+                                tools:text="20g" />
+
+                        <TextView
+                                android:id="@+id/val_b_carb_perc"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginEnd="4dp"
+                                android:gravity="center|center_horizontal|center_vertical"
+                                android:fontFamily="sans-serif-light"
+                                android:textSize="14sp"
+                                app:layout_constraintBottom_toBottomOf="@+id/title_b_carb"
+                                app:layout_constraintEnd_toStartOf="@+id/val_b_carb_g"
+                                app:layout_constraintTop_toTopOf="@+id/title_b_carb"
+                                tools:text="(10%)" />
+
+                        <TextView
+                                android:id="@+id/val_l_carb_g"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginEnd="8dp"
+                                android:gravity="center|center_horizontal|center_vertical"
+                                android:textSize="16sp"
+                                app:layout_constraintBottom_toBottomOf="@+id/title_l_carb"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintTop_toTopOf="@+id/title_l_carb"
+                                tools:text="20g" />
+
+                        <TextView
+                                android:id="@+id/val_l_carb_perc"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginEnd="4dp"
+                                android:gravity="center|center_horizontal|center_vertical"
+                                android:fontFamily="sans-serif-light"
+                                android:textSize="14sp"
+                                app:layout_constraintBottom_toBottomOf="@+id/title_l_carb"
+                                app:layout_constraintEnd_toStartOf="@+id/val_l_carb_g"
+                                app:layout_constraintTop_toTopOf="@+id/title_l_carb"
+                                tools:text="(10%)" />
+
+                        <TextView
+                                android:id="@+id/val_d_carb_g"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginEnd="8dp"
+                                android:gravity="center|center_horizontal|center_vertical"
+                                android:textSize="16sp"
+                                app:layout_constraintBottom_toBottomOf="@+id/title_d_carb"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintTop_toTopOf="@+id/title_d_carb"
+                                tools:text="20g" />
+
+                        <TextView
+                                android:id="@+id/val_s_carb_g"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginEnd="8dp"
+                                android:gravity="center|center_horizontal|center_vertical"
+                                android:textSize="16sp"
+                                app:layout_constraintBottom_toBottomOf="@+id/title_s_carb"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintTop_toTopOf="@+id/title_s_carb"
+                                tools:text="20g" />
+
+                        <TextView
+                                android:id="@+id/val_d_carb_perc"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginEnd="4dp"
+                                android:gravity="center|center_horizontal|center_vertical"
+                                android:fontFamily="sans-serif-light"
+                                android:textSize="14sp"
+                                app:layout_constraintBottom_toBottomOf="@+id/title_d_carb"
+                                app:layout_constraintEnd_toStartOf="@+id/val_d_carb_g"
+                                app:layout_constraintTop_toTopOf="@+id/title_d_carb"
+                                tools:text="(10%)" />
+
+                        <TextView
+                                android:id="@+id/val_s_carb_perc"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginEnd="4dp"
+                                android:gravity="center|center_horizontal|center_vertical"
+                                android:fontFamily="sans-serif-light"
+                                android:textSize="14sp"
+                                app:layout_constraintBottom_toBottomOf="@+id/title_s_carb"
+                                app:layout_constraintEnd_toStartOf="@+id/val_s_carb_g"
+                                app:layout_constraintTop_toTopOf="@+id/title_s_carb"
+                                tools:text="(10%)" />
+
+                        <TextView
+                                android:id="@+id/ind_b_carb"
+                                android:layout_width="16dp"
+                                android:layout_height="16dp"
+                                android:background="@color/breakfast"
+                                android:layout_marginStart="4dp"
+                                app:layout_constraintBottom_toBottomOf="@+id/title_b_carb"
+                                app:layout_constraintStart_toEndOf="@+id/pie_chart_carbo"
+                                app:layout_constraintTop_toTopOf="@+id/title_b_carb" />
+
+                        <TextView
+                                android:id="@+id/ind_l_carb"
+                                android:layout_width="16dp"
+                                android:layout_height="16dp"
+                                android:background="@color/lunch"
+                                android:layout_marginStart="4dp"
+                                app:layout_constraintBottom_toBottomOf="@+id/title_l_carb"
+                                app:layout_constraintStart_toEndOf="@+id/pie_chart_carbo"
+                                app:layout_constraintTop_toTopOf="@+id/title_l_carb" />
+
+                        <TextView
+                                android:id="@+id/ind_d_carb"
+                                android:layout_width="16dp"
+                                android:layout_height="16dp"
+                                android:background="@color/dinner"
+                                android:layout_marginStart="4dp"
+                                app:layout_constraintBottom_toBottomOf="@+id/title_d_carb"
+                                app:layout_constraintStart_toEndOf="@+id/pie_chart_carbo"
+                                app:layout_constraintTop_toTopOf="@+id/title_d_carb" />
+
+                        <TextView
+                                android:id="@+id/ind_s_carb"
+                                android:layout_width="16dp"
+                                android:layout_height="16dp"
+                                android:background="@color/snack"
+                                android:layout_marginStart="4dp"
+                                app:layout_constraintBottom_toBottomOf="@+id/title_s_carb"
+                                app:layout_constraintStart_toEndOf="@+id/pie_chart_carbo"
+                                app:layout_constraintTop_toTopOf="@+id/title_s_carb" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+                <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/card_fat"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="8dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/card_carbo">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/macro_fat_layout"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@color/cardview_background">
+
+
+                        <TextView
+                                android:id="@+id/fat_title_card"
+                                android:text="@string/fats"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textSize="19sp"
+                                android:textStyle="bold"
+                                android:layout_marginStart="8dp"
+                                android:layout_marginTop="8dp"
+                                android:layout_marginEnd="8dp"
+                                android:textColor="@color/fat"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintHorizontal_bias="0.0"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                        <com.github.mikephil.charting.charts.PieChart
+                                android:id="@+id/pie_chart_fats"
+                                android:padding="9dp"
+                                android:layout_width="110dp"
+                                android:layout_height="110dp"
+                                android:layout_marginStart="4dp"
+                                android:layout_marginBottom="8dp"
+                                android:layout_marginEnd="8dp"
+                                android:layout_marginTop="4dp"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintHorizontal_bias="0.0"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@+id/fat_title_card">
+
+                        </com.github.mikephil.charting.charts.PieChart>
+
+                        <TextView
+                                android:id="@+id/title_b_fat"
+                                android:text="@string/breakfast"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textSize="16sp"
+                                android:gravity="center|center_horizontal|center_vertical"
+                                android:layout_marginTop="4dp"
+                                android:layout_marginStart="4dp"
+                                app:layout_constraintBottom_toTopOf="@+id/divider_f7"
+                                app:layout_constraintStart_toEndOf="@+id/ind_b_fat"
+                                app:layout_constraintTop_toBottomOf="@+id/fat_title_card" />
+
+                        <TextView
+                                android:id="@+id/title_l_fat"
+                                android:text="@string/lunch"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textSize="16sp"
+                                android:gravity="center|center_horizontal|center_vertical"
+                                android:layout_marginStart="4dp"
+                                app:layout_constraintBottom_toTopOf="@+id/divider_f8"
+                                app:layout_constraintStart_toEndOf="@+id/ind_l_fat"
+                                app:layout_constraintTop_toBottomOf="@+id/divider_f7" />
+
+                        <TextView
+                                android:id="@+id/title_d_fat"
+                                android:text="@string/dinner"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textSize="16sp"
+                                android:gravity="center|center_horizontal|center_vertical"
+                                android:layout_marginStart="4dp"
+                                app:layout_constraintBottom_toTopOf="@+id/divider_f9"
+                                app:layout_constraintStart_toEndOf="@+id/ind_d_fat"
+                                app:layout_constraintTop_toBottomOf="@+id/divider_f8" />
+
+                        <TextView
+                                android:id="@+id/title_s_fat"
+                                android:text="@string/snack"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textSize="16sp"
+                                android:gravity="center|center_horizontal|center_vertical"
+                                android:layout_marginBottom="8dp"
+                                android:layout_marginStart="4dp"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintStart_toEndOf="@+id/ind_s_fat"
+                                app:layout_constraintTop_toBottomOf="@+id/divider_f9" />
+
+                        <View
+                                android:id="@+id/divider_f7"
+                                android:layout_width="0dp"
+                                android:layout_height="1dp"
+                                android:background="?android:attr/listDivider"
+                                app:layout_constraintBottom_toTopOf="@+id/title_l_fat"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintHorizontal_bias="0.5"
+                                app:layout_constraintStart_toEndOf="@+id/pie_chart_fats"
+                                app:layout_constraintTop_toBottomOf="@+id/title_b_fat" />
+
+                        <View
+                                android:id="@+id/divider_f8"
+                                android:layout_width="0dp"
+                                android:layout_height="1dp"
+                                android:background="?android:attr/listDivider"
+                                app:layout_constraintBottom_toTopOf="@+id/title_d_fat"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintHorizontal_bias="0.5"
+                                app:layout_constraintStart_toEndOf="@+id/pie_chart_fats"
+                                app:layout_constraintTop_toBottomOf="@+id/title_l_fat" />
+
+                        <View
+                                android:id="@+id/divider_f9"
+                                android:layout_width="0dp"
+                                android:layout_height="1dp"
+                                android:background="?android:attr/listDivider"
+                                app:layout_constraintBottom_toTopOf="@+id/title_s_fat"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintHorizontal_bias="0.5"
+                                app:layout_constraintStart_toEndOf="@+id/pie_chart_fats"
+                                app:layout_constraintTop_toBottomOf="@+id/title_d_fat" />
+
+                        <TextView
+                                android:id="@+id/val_b_fat_g"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginEnd="8dp"
+                                android:gravity="center|center_horizontal|center_vertical"
+                                android:textSize="16sp"
+                                app:layout_constraintBottom_toBottomOf="@+id/title_b_fat"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintTop_toTopOf="@+id/title_b_fat"
+                                tools:text="20g" />
+
+                        <TextView
+                                android:id="@+id/val_b_fat_perc"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginEnd="4dp"
+                                android:gravity="center|center_horizontal|center_vertical"
+                                android:fontFamily="sans-serif-light"
+                                android:textSize="14sp"
+                                app:layout_constraintBottom_toBottomOf="@+id/title_b_fat"
+                                app:layout_constraintEnd_toStartOf="@+id/val_b_fat_g"
+                                app:layout_constraintTop_toTopOf="@+id/title_b_fat"
+                                tools:text="(10%)" />
+
+                        <TextView
+                                android:id="@+id/val_l_fat_g"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginEnd="8dp"
+                                android:gravity="center|center_horizontal|center_vertical"
+                                android:textSize="16sp"
+                                app:layout_constraintBottom_toBottomOf="@+id/title_l_fat"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintTop_toTopOf="@+id/title_l_fat"
+                                tools:text="20g" />
+
+                        <TextView
+                                android:id="@+id/val_l_fat_perc"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginEnd="4dp"
+                                android:gravity="center|center_horizontal|center_vertical"
+                                android:fontFamily="sans-serif-light"
+                                android:textSize="14sp"
+                                app:layout_constraintBottom_toBottomOf="@+id/title_l_fat"
+                                app:layout_constraintEnd_toStartOf="@+id/val_l_fat_g"
+                                app:layout_constraintTop_toTopOf="@+id/title_l_fat"
+                                tools:text="(10%)" />
+
+                        <TextView
+                                android:id="@+id/val_d_fat_g"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginEnd="8dp"
+                                android:gravity="center|center_horizontal|center_vertical"
+                                android:textSize="16sp"
+                                app:layout_constraintBottom_toBottomOf="@+id/title_d_fat"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintTop_toTopOf="@+id/title_d_fat"
+                                tools:text="20g" />
+
+                        <TextView
+                                android:id="@+id/val_s_fat_g"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginEnd="8dp"
+                                android:gravity="center|center_horizontal|center_vertical"
+                                android:textSize="16sp"
+                                app:layout_constraintBottom_toBottomOf="@+id/title_s_fat"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintTop_toTopOf="@+id/title_s_fat"
+                                tools:text="20g" />
+
+                        <TextView
+                                android:id="@+id/val_d_fat_perc"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginEnd="4dp"
+                                android:gravity="center|center_horizontal|center_vertical"
+                                android:fontFamily="sans-serif-light"
+                                android:textSize="14sp"
+                                app:layout_constraintBottom_toBottomOf="@+id/title_d_fat"
+                                app:layout_constraintEnd_toStartOf="@+id/val_d_fat_g"
+                                app:layout_constraintTop_toTopOf="@+id/title_d_fat"
+                                tools:text="(10%)" />
+
+                        <TextView
+                                android:id="@+id/val_s_fat_perc"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginEnd="4dp"
+                                android:gravity="center|center_horizontal|center_vertical"
+                                android:fontFamily="sans-serif-light"
+                                android:textSize="14sp"
+                                app:layout_constraintBottom_toBottomOf="@+id/title_s_fat"
+                                app:layout_constraintEnd_toStartOf="@+id/val_s_fat_g"
+                                app:layout_constraintTop_toTopOf="@+id/title_s_fat"
+                                tools:text="(10%)" />
+
+                        <TextView
+                                android:id="@+id/ind_b_fat"
+                                android:layout_width="16dp"
+                                android:layout_height="16dp"
+                                android:background="@color/breakfast"
+                                android:layout_marginStart="4dp"
+                                app:layout_constraintBottom_toBottomOf="@+id/title_b_fat"
+                                app:layout_constraintStart_toEndOf="@+id/pie_chart_fats"
+                                app:layout_constraintTop_toTopOf="@+id/title_b_fat" />
+
+                        <TextView
+                                android:id="@+id/ind_l_fat"
+                                android:layout_width="16dp"
+                                android:layout_height="16dp"
+                                android:background="@color/lunch"
+                                android:layout_marginStart="4dp"
+                                app:layout_constraintBottom_toBottomOf="@+id/title_l_fat"
+                                app:layout_constraintStart_toEndOf="@+id/pie_chart_fats"
+                                app:layout_constraintTop_toTopOf="@+id/title_l_fat" />
+
+                        <TextView
+                                android:id="@+id/ind_d_fat"
+                                android:layout_width="16dp"
+                                android:layout_height="16dp"
+                                android:background="@color/dinner"
+                                android:layout_marginStart="4dp"
+                                app:layout_constraintBottom_toBottomOf="@+id/title_d_fat"
+                                app:layout_constraintStart_toEndOf="@+id/pie_chart_fats"
+                                app:layout_constraintTop_toTopOf="@+id/title_d_fat" />
+
+                        <TextView
+                                android:id="@+id/ind_s_fat"
+                                android:layout_width="16dp"
+                                android:layout_height="16dp"
+                                android:background="@color/snack"
+                                android:layout_marginStart="4dp"
+                                app:layout_constraintBottom_toBottomOf="@+id/title_s_fat"
+                                app:layout_constraintStart_toEndOf="@+id/pie_chart_fats"
+                                app:layout_constraintTop_toTopOf="@+id/title_s_fat" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+                <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/card_pro"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="8dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/card_fat">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/macro_pro_layout"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@color/cardview_background">
+
+
+                        <TextView
+                                android:id="@+id/pro_title_card"
+                                android:text="@string/proteins"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textSize="19sp"
+                                android:textStyle="bold"
+                                android:layout_marginStart="8dp"
+                                android:layout_marginTop="8dp"
+                                android:layout_marginEnd="8dp"
+                                android:textColor="@color/proteins"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintHorizontal_bias="0.0"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                        <com.github.mikephil.charting.charts.PieChart
+                                android:id="@+id/pie_chart_pros"
+                                android:padding="9dp"
+                                android:layout_width="110dp"
+                                android:layout_height="110dp"
+                                android:layout_marginStart="4dp"
+                                android:layout_marginBottom="8dp"
+                                android:layout_marginEnd="8dp"
+                                android:layout_marginTop="4dp"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintHorizontal_bias="0.0"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@+id/pro_title_card">
+
+                        </com.github.mikephil.charting.charts.PieChart>
+
+                        <TextView
+                                android:id="@+id/title_b_pro"
+                                android:text="@string/breakfast"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textSize="16sp"
+                                android:gravity="center|center_horizontal|center_vertical"
+                                android:layout_marginTop="4dp"
+                                android:layout_marginStart="4dp"
+                                app:layout_constraintBottom_toTopOf="@+id/divider_p7"
+                                app:layout_constraintStart_toEndOf="@+id/ind_b_pro"
+                                app:layout_constraintTop_toBottomOf="@+id/pro_title_card" />
+
+                        <TextView
+                                android:id="@+id/title_l_pro"
+                                android:text="@string/lunch"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textSize="16sp"
+                                android:gravity="center|center_horizontal|center_vertical"
+                                android:layout_marginStart="4dp"
+                                app:layout_constraintBottom_toTopOf="@+id/divider_p8"
+                                app:layout_constraintStart_toEndOf="@+id/ind_l_pro"
+                                app:layout_constraintTop_toBottomOf="@+id/divider_p7" />
+
+                        <TextView
+                                android:id="@+id/title_d_pro"
+                                android:text="@string/dinner"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textSize="16sp"
+                                android:gravity="center|center_horizontal|center_vertical"
+                                android:layout_marginStart="4dp"
+                                app:layout_constraintBottom_toTopOf="@+id/divider_p9"
+                                app:layout_constraintStart_toEndOf="@+id/ind_d_pro"
+                                app:layout_constraintTop_toBottomOf="@+id/divider_p8" />
+
+                        <TextView
+                                android:id="@+id/title_s_pro"
+                                android:text="@string/snack"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textSize="16sp"
+                                android:gravity="center|center_horizontal|center_vertical"
+                                android:layout_marginBottom="8dp"
+                                android:layout_marginStart="4dp"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintStart_toEndOf="@+id/ind_s_pro"
+                                app:layout_constraintTop_toBottomOf="@+id/divider_p9" />
+
+                        <View
+                                android:id="@+id/divider_p7"
+                                android:layout_width="0dp"
+                                android:layout_height="1dp"
+                                android:background="?android:attr/listDivider"
+                                app:layout_constraintBottom_toTopOf="@+id/title_l_pro"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintHorizontal_bias="0.5"
+                                app:layout_constraintStart_toEndOf="@+id/pie_chart_pros"
+                                app:layout_constraintTop_toBottomOf="@+id/title_b_pro" />
+
+                        <View
+                                android:id="@+id/divider_p8"
+                                android:layout_width="0dp"
+                                android:layout_height="1dp"
+                                android:background="?android:attr/listDivider"
+                                app:layout_constraintBottom_toTopOf="@+id/title_d_pro"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintHorizontal_bias="0.5"
+                                app:layout_constraintStart_toEndOf="@+id/pie_chart_pros"
+                                app:layout_constraintTop_toBottomOf="@+id/title_l_pro" />
+
+                        <View
+                                android:id="@+id/divider_p9"
+                                android:layout_width="0dp"
+                                android:layout_height="1dp"
+                                android:background="?android:attr/listDivider"
+                                app:layout_constraintBottom_toTopOf="@+id/title_s_pro"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintHorizontal_bias="0.5"
+                                app:layout_constraintStart_toEndOf="@+id/pie_chart_pros"
+                                app:layout_constraintTop_toBottomOf="@+id/title_d_pro" />
+
+                        <TextView
+                                android:id="@+id/val_b_pro_g"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginEnd="8dp"
+                                android:gravity="center|center_horizontal|center_vertical"
+                                android:textSize="16sp"
+                                app:layout_constraintBottom_toBottomOf="@+id/title_b_pro"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintTop_toTopOf="@+id/title_b_pro"
+                                tools:text="20g" />
+
+                        <TextView
+                                android:id="@+id/val_b_pro_perc"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginEnd="4dp"
+                                android:gravity="center|center_horizontal|center_vertical"
+                                android:fontFamily="sans-serif-light"
+                                android:textSize="14sp"
+                                app:layout_constraintBottom_toBottomOf="@+id/title_b_pro"
+                                app:layout_constraintEnd_toStartOf="@+id/val_b_pro_g"
+                                app:layout_constraintTop_toTopOf="@+id/title_b_pro"
+                                tools:text="(10%)" />
+
+                        <TextView
+                                android:id="@+id/val_l_pro_g"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginEnd="8dp"
+                                android:gravity="center|center_horizontal|center_vertical"
+                                android:textSize="16sp"
+                                app:layout_constraintBottom_toBottomOf="@+id/title_l_pro"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintTop_toTopOf="@+id/title_l_pro"
+                                tools:text="20g" />
+
+                        <TextView
+                                android:id="@+id/val_l_pro_perc"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginEnd="4dp"
+                                android:gravity="center|center_horizontal|center_vertical"
+                                android:fontFamily="sans-serif-light"
+                                android:textSize="14sp"
+                                app:layout_constraintBottom_toBottomOf="@+id/title_l_pro"
+                                app:layout_constraintEnd_toStartOf="@+id/val_l_pro_g"
+                                app:layout_constraintTop_toTopOf="@+id/title_l_pro"
+                                tools:text="(10%)" />
+
+                        <TextView
+                                android:id="@+id/val_d_pro_g"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginEnd="8dp"
+                                android:gravity="center|center_horizontal|center_vertical"
+                                android:textSize="16sp"
+                                app:layout_constraintBottom_toBottomOf="@+id/title_d_pro"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintTop_toTopOf="@+id/title_d_pro"
+                                tools:text="20g" />
+
+                        <TextView
+                                android:id="@+id/val_s_pro_g"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginEnd="8dp"
+                                android:gravity="center|center_horizontal|center_vertical"
+                                android:textSize="16sp"
+                                app:layout_constraintBottom_toBottomOf="@+id/title_s_pro"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintTop_toTopOf="@+id/title_s_pro"
+                                tools:text="20g" />
+
+                        <TextView
+                                android:id="@+id/val_d_pro_perc"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginEnd="4dp"
+                                android:gravity="center|center_horizontal|center_vertical"
+                                android:fontFamily="sans-serif-light"
+                                android:textSize="14sp"
+                                app:layout_constraintBottom_toBottomOf="@+id/title_d_pro"
+                                app:layout_constraintEnd_toStartOf="@+id/val_d_pro_g"
+                                app:layout_constraintTop_toTopOf="@+id/title_d_pro"
+                                tools:text="(10%)" />
+
+                        <TextView
+                                android:id="@+id/val_s_pro_perc"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginEnd="4dp"
+                                android:gravity="center|center_horizontal|center_vertical"
+                                android:fontFamily="sans-serif-light"
+                                android:textSize="14sp"
+                                app:layout_constraintBottom_toBottomOf="@+id/title_s_pro"
+                                app:layout_constraintEnd_toStartOf="@+id/val_s_pro_g"
+                                app:layout_constraintTop_toTopOf="@+id/title_s_pro"
+                                tools:text="(10%)" />
+
+                        <TextView
+                                android:id="@+id/ind_b_pro"
+                                android:layout_width="16dp"
+                                android:layout_height="16dp"
+                                android:background="@color/breakfast"
+                                android:layout_marginStart="4dp"
+                                app:layout_constraintBottom_toBottomOf="@+id/title_b_pro"
+                                app:layout_constraintStart_toEndOf="@+id/pie_chart_pros"
+                                app:layout_constraintTop_toTopOf="@+id/title_b_pro" />
+
+                        <TextView
+                                android:id="@+id/ind_l_pro"
+                                android:layout_width="16dp"
+                                android:layout_height="16dp"
+                                android:background="@color/lunch"
+                                android:layout_marginStart="4dp"
+                                app:layout_constraintBottom_toBottomOf="@+id/title_l_pro"
+                                app:layout_constraintStart_toEndOf="@+id/pie_chart_pros"
+                                app:layout_constraintTop_toTopOf="@+id/title_l_pro" />
+
+                        <TextView
+                                android:id="@+id/ind_d_pro"
+                                android:layout_width="16dp"
+                                android:layout_height="16dp"
+                                android:background="@color/dinner"
+                                android:layout_marginStart="4dp"
+                                app:layout_constraintBottom_toBottomOf="@+id/title_d_pro"
+                                app:layout_constraintStart_toEndOf="@+id/pie_chart_pros"
+                                app:layout_constraintTop_toTopOf="@+id/title_d_pro" />
+
+                        <TextView
+                                android:id="@+id/ind_s_pro"
+                                android:layout_width="16dp"
+                                android:layout_height="16dp"
+                                android:background="@color/snack"
+                                android:layout_marginStart="4dp"
+                                app:layout_constraintBottom_toBottomOf="@+id/title_s_pro"
+                                app:layout_constraintStart_toEndOf="@+id/pie_chart_pros"
+                                app:layout_constraintTop_toTopOf="@+id/title_s_pro" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </ScrollView>
+
+        <ProgressBar
+                android:id="@+id/loading_spinner"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center"
+                android:visibility="gone"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginBottom="8dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:loadingStatus="@{viewModel.status}"
+                tools:visibility="visible" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</layout>

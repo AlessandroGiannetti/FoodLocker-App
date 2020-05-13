@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+                name="viewModel"
+                type="com.letsbuildthatapp.foodlocker.ui.profile.myProfile.MyProfileViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:context="com.example.android.navigation.HomeFragment">
+
+        <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                <TextView
+                        android:id="@+id/username_textview_profile"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@{viewModel.username}"
+                        android:textSize="30sp"
+                        android:textStyle="bold"
+                        android:textAlignment="center"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginEnd="8dp"
+                        app:layout_constraintBottom_toBottomOf="@+id/imageview_profile"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/imageview_profile"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.3"
+                        tools:text="nome e cognome" />
+
+                <TextView
+                        android:id="@+id/email_textview_profile"
+                        android:layout_width="wrap_content"
+                        android:layout_height="19dp"
+                        android:text="@{viewModel.email}"
+                        android:textSize="16sp"
+                        android:textAlignment="center"
+                        android:fontFamily="sans-serif-light"
+                        app:layout_constraintEnd_toEndOf="@+id/username_textview_profile"
+                        app:layout_constraintStart_toStartOf="@+id/username_textview_profile"
+                        app:layout_constraintTop_toBottomOf="@+id/username_textview_profile"
+                        tools:text="pippo@coca.it" />
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/imageview_profile"
+                        android:layout_width="110dp"
+                        android:layout_height="110dp"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginBottom="8dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.0"
+                        app:srcCompat="@android:drawable/btn_dialog"
+                        tools:srcCompat="@drawable/ic_account_circle_black_24dp" />
+
+
+                <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/post_list"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginBottom="24dp"
+                        app:layoutManager="androidx.recyclerview.widget.StaggeredGridLayoutManager"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/imageview_profile"
+                        app:layout_constraintVertical_bias="1.0"
+                        app:listPostMyProfile="@{viewModel.properties}"
+                        app:spanCount="1"
+                        tools:listitem="@layout/list_post_view_item" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </ScrollView>
+
+        <ProgressBar
+                android:id="@+id/loading_spinner"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center"
+                android:visibility="gone"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginBottom="8dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:loadingStatus="@{viewModel.status}"
+                tools:visibility="visible" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

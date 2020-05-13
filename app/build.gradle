@@ -1,0 +1,137 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+
+android {
+    compileSdkVersion 29
+
+    dataBinding {
+        enabled = true
+    }
+
+    defaultConfig {
+        applicationId "com.letsbuildthatapp.kotlinmessenger"
+        minSdkVersion 26
+        targetSdkVersion 29
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        multiDexEnabled true
+
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    androidExtensions {
+        experimental = true
+    }
+
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_1_8
+        targetCompatibility = JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = JavaVersion.VERSION_1_8
+    }
+
+}
+repositories {
+    maven { url 'https://jitpack.io' }
+}
+
+dependencies {
+    kapt "com.android.databinding:compiler:3.1.4"
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    // Kotlin
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
+    implementation 'androidx.appcompat:appcompat:1.1.0'
+
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+
+    // Constraint Layout
+    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+
+    // ViewModel and LiveData
+    implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:2.2.0"
+    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0'
+
+    // ViewModel and LiveData
+    implementation 'androidx.preference:preference-ktx:1.1.1'
+    implementation 'androidx.navigation:navigation-fragment:2.2.2'
+    implementation 'androidx.navigation:navigation-ui:2.2.2'
+    implementation 'androidx.navigation:navigation-fragment-ktx:2.2.2'
+    implementation 'androidx.navigation:navigation-ui-ktx:2.2.2'
+
+    // firebase
+    implementation 'com.google.firebase:firebase-core:17.3.0'
+    implementation 'com.google.firebase:firebase-auth:19.3.0'
+    implementation 'com.google.firebase:firebase-storage:19.1.1'
+    implementation 'com.google.firebase:firebase-database:19.2.1'
+
+    // google auth
+    implementation 'com.google.android.gms:play-services-auth:18.0.0'
+
+    // facebook auth
+    implementation 'com.facebook.android:facebook-android-sdk:4.42.0'
+
+    // circle image support
+    implementation 'de.hdodenhof:circleimageview:3.1.0'
+
+    // recyclerview
+    implementation 'androidx.recyclerview:recyclerview:1.1.0'
+
+    implementation 'com.xwray:groupie:2.1.0'
+
+    // image support display
+    implementation 'com.squareup.picasso:picasso:2.71828'
+
+    // material theme
+    implementation 'com.google.android.material:material:1.2.0-alpha06'
+
+    // Navigation
+    implementation 'androidx.navigation:navigation-fragment-ktx:2.2.2'
+    implementation 'androidx.navigation:navigation-ui-ktx:2.2.2'
+
+    // retrofit libraries
+    implementation "com.squareup.retrofit2:retrofit:2.8.1"
+    implementation "com.squareup.retrofit2:converter-scalars:2.8.1"
+
+    // moshi - json parser
+    implementation "com.squareup.moshi:moshi:1.9.2"
+    implementation "com.squareup.moshi:moshi-kotlin:1.9.2"
+
+    // retrofit convertet moshi
+    implementation "com.squareup.retrofit2:converter-moshi:2.8.1"
+
+    // coroutines
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.3.0"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.3.0"
+
+    // coroutine library for retrofit
+    implementation "com.jakewharton.retrofit:retrofit2-kotlin-coroutines-adapter:0.9.2"
+
+    // testing implementation
+    testImplementation 'junit:junit:4.13'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+
+    // plotting library
+    implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0'
+    implementation 'com.android.support:cardview-v7:29.0.0'
+
+    implementation 'com.github.bumptech.glide:glide:4.11.0'
+    implementation 'com.google.android.gms:play-services-maps:17.0.0'
+
+    // Room dependency
+    implementation "androidx.room:room-runtime:2.2.5"
+    kapt "androidx.room:room-compiler:2.2.5"
+}
+
+apply plugin: 'com.google.gms.google-services'

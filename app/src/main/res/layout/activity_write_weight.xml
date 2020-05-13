@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+                name="viewModel"
+                type="com.letsbuildthatapp.foodlocker.ui.progress.ProgressViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:context="com.example.android.navigation.WriteWeightActivity">
+
+        <com.google.android.material.card.MaterialCardView
+                android:id="@+id/card"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/cardview_background">
+
+                <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/email_text_login"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:theme="@style/TextInputLayoutStyle"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginTop="32dp"
+                        app:endIconDrawable="@drawable/ic_scale"
+                        app:endIconMode="custom"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/email_edittext_login"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="@string/weight"
+                            android:text="@={viewModel.weight}"
+                            android:inputType="number|numberDecimal" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <Button
+                        android:id="@+id/selectphoto_button_weight"
+                        style="@style/Widget.MaterialComponents.Button.TextButton"
+                        android:layout_width="88dp"
+                        android:layout_height="34dp"
+                        android:textStyle="bold"
+                        android:textSize="12sp"
+                        android:text="@string/image"
+                        android:textColor="@color/white_50"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginBottom="8dp"
+                        app:icon="@drawable/ic_photo_library_black_24dp"
+                        app:iconTint="@color/white_50"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/selectphoto_imageview_weight" />
+
+                <ImageView
+                        android:id="@+id/selectphoto_imageview_weight"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:scaleType="fitCenter"
+                        android:adjustViewBounds="true"
+                        android:contentDescription="@string/image_post"
+                        android:maxHeight="250dp"
+                        android:layout_marginTop="8dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/email_text_login"
+                        tools:srcCompat="@drawable/ic_friendship" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

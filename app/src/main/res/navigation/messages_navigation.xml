@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/mobile_navigation"
+        app:startDestination="@id/latestMessagesFragment">
+
+
+    <fragment
+            android:id="@+id/chatLogFragment"
+            android:name="com.letsbuildthatapp.foodlocker.ui.messages.ChatLogFragment"
+            tools:layout="@layout/fragment_chat_log" />
+
+    <fragment
+            android:id="@+id/newMessageFragment"
+            android:name="com.letsbuildthatapp.foodlocker.ui.messages.NewMessageFragment"
+            android:label="New Chat"
+            tools:layout="@layout/fragment_new_message">
+        <action
+                android:id="@+id/action_newMessageFragment_to_chatLogFragment"
+                app:destination="@id/chatLogFragment"
+                app:popUpTo="@id/latestMessagesFragment" />
+    </fragment>
+    <fragment
+            android:id="@+id/latestMessagesFragment"
+            android:name="LatestMessagesFragment"
+            android:label="Chat"
+            tools:layout="@layout/fragment_latest_messages">
+        <action
+                android:id="@+id/action_latestMessagesFragment_to_chatLogFragment"
+                app:destination="@id/chatLogFragment" />
+        <action
+                android:id="@+id/action_latestMessagesFragment_to_newMessageFragment"
+                app:destination="@id/newMessageFragment" />
+    </fragment>
+
+</navigation>

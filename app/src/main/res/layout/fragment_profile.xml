@@ -1,0 +1,579 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+                name="viewModel"
+                type="com.letsbuildthatapp.foodlocker.ui.profile.ProfileViewModel" />
+    </data>
+
+    <ScrollView
+            android:id="@+id/scrollview_profile"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/profile_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:context="com.example.android.navigation.ProfileFragment">
+
+            <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/card_profile_info"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginStart="8dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/profile_layout_card"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/cardview_background">
+
+                    <TextView
+                            android:id="@+id/username_textview_profile"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@{viewModel.username}"
+                            android:textSize="24sp"
+                            android:textStyle="bold"
+                            android:textAlignment="center"
+                            android:layout_marginTop="8dp"
+                            android:layout_marginEnd="8dp"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toEndOf="@+id/imageview_profile"
+                            app:layout_constraintTop_toTopOf="parent"
+                            tools:text="nome e cognome" />
+
+                    <TextView
+                            android:id="@+id/email_textview_profile"
+                            android:layout_width="wrap_content"
+                            android:layout_height="19dp"
+                            android:text="@{viewModel.email}"
+                            android:textSize="13sp"
+                            android:textAlignment="center"
+                            app:layout_constraintEnd_toEndOf="@+id/username_textview_profile"
+                            app:layout_constraintStart_toStartOf="@+id/username_textview_profile"
+                            app:layout_constraintTop_toBottomOf="@+id/username_textview_profile"
+                            tools:text="pippo@coca.it" />
+
+                    <de.hdodenhof.circleimageview.CircleImageView
+                            android:id="@+id/imageview_profile"
+                            android:layout_width="110dp"
+                            android:layout_height="110dp"
+                            android:layout_marginStart="8dp"
+                            android:layout_marginTop="8dp"
+                            android:layout_marginBottom="8dp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintVertical_bias="0.0"
+                            app:srcCompat="@android:drawable/btn_dialog"
+                            tools:srcCompat="@drawable/ic_account_circle_black_24dp" />
+
+                    <TextView
+                            android:id="@+id/follower_title"
+                            android:text="@string/followers"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:textAlignment="center"
+                            android:textSize="16sp"
+                            android:layout_marginBottom="8dp"
+                            android:layout_marginStart="8dp"
+                            app:layout_constraintBottom_toBottomOf="@+id/imageview_profile"
+                            app:layout_constraintEnd_toStartOf="@+id/following_title"
+                            app:layout_constraintStart_toEndOf="@+id/imageview_profile"
+                            app:layout_constraintTop_toBottomOf="@+id/followers_number" />
+
+                    <TextView
+                            android:id="@+id/following_title"
+                            android:text="@string/following"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:textAlignment="center"
+                            android:textSize="16sp"
+                            android:layout_marginEnd="8dp"
+                            android:layout_marginBottom="8dp"
+                            app:layout_constraintBottom_toBottomOf="@+id/imageview_profile"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toEndOf="@+id/follower_title"
+                            app:layout_constraintTop_toBottomOf="@+id/following_number" />
+
+                    <TextView
+                            android:id="@+id/followers_number"
+                            android:text="@{viewModel.Nfollowers}"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textStyle="bold"
+                            android:textSize="18sp"
+                            android:gravity="center"
+                            android:layout_marginTop="8dp"
+                            app:layout_constraintBottom_toTopOf="@+id/follower_title"
+                            app:layout_constraintEnd_toEndOf="@+id/follower_title"
+                            app:layout_constraintStart_toStartOf="@+id/follower_title"
+                            app:layout_constraintTop_toBottomOf="@+id/email_textview_profile"
+                            tools:text="0" />
+
+                    <TextView
+                            android:id="@+id/following_number"
+                            android:text="@{viewModel.Nfollowing}"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textStyle="bold"
+                            android:textSize="18sp"
+                            android:layout_marginTop="8dp"
+                            android:gravity="center"
+                            app:layout_constraintBottom_toTopOf="@+id/following_title"
+                            app:layout_constraintEnd_toEndOf="@+id/following_title"
+                            app:layout_constraintStart_toStartOf="@+id/following_title"
+                            app:layout_constraintTop_toBottomOf="@+id/email_textview_profile"
+                            tools:text="0" />
+
+                    <TextView
+                            android:id="@+id/title_basal"
+                            android:text="@string/basal"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textStyle="bold"
+                            android:textSize="16sp"
+                            android:drawableStart="@drawable/ic_progress_black_24dp"
+                            android:drawableTint="@color/material_on_background_emphasis_medium"
+                            android:gravity="center_vertical|end"
+                            android:drawablePadding="4dp"
+                            android:layout_marginEnd="4dp"
+                            app:layout_constraintBottom_toBottomOf="@+id/kg_result_value"
+                            app:layout_constraintEnd_toStartOf="@+id/kcal_value"
+                            app:layout_constraintTop_toTopOf="@+id/kg_result_value" />
+
+                    <TextView
+                            android:id="@+id/kcal_value"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="16sp"
+                            android:text="@{viewModel.basalKcal}"
+                            android:gravity="center_vertical"
+                            android:layout_marginEnd="8dp"
+                            app:layout_constraintBottom_toBottomOf="@+id/title_basal"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="@+id/title_basal"
+                            tools:text="2000 Kcal" />
+
+                    <TextView
+                            android:id="@+id/Kg_result_title"
+                            android:text="@string/loss"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:textSize="16sp"
+                            android:textStyle="bold"
+                            android:layout_marginBottom="8dp"
+                            android:drawableTint="@color/material_on_background_emphasis_medium"
+                            android:gravity="center_vertical|end"
+                            android:drawableStart="@drawable/ic_weight"
+                            android:drawablePadding="4dp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="@+id/title_actual_weight_profile"
+                            app:layout_constraintHorizontal_bias="1.0"
+                            app:layout_constraintStart_toStartOf="@+id/title_actual_weight_profile" />
+
+                    <TextView
+                            android:id="@+id/kg_result_value"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="16sp"
+                            android:text="@{viewModel.kgLoss}"
+                            android:gravity="center_vertical"
+                            app:layout_constraintBottom_toBottomOf="@+id/Kg_result_title"
+                            app:layout_constraintEnd_toEndOf="@+id/actual_weight_profile"
+                            app:layout_constraintHorizontal_bias="0.0"
+                            app:layout_constraintStart_toStartOf="@+id/actual_weight_profile"
+                            app:layout_constraintTop_toTopOf="@+id/Kg_result_title"
+                            tools:text="-4.0 Kg" />
+
+                    <TextView
+                            android:id="@+id/title_actual_weight_profile"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="16sp"
+                            android:textStyle="bold"
+                            android:drawableStart="@drawable/ic_weight"
+                            android:drawableTint="@color/material_on_background_emphasis_medium"
+                            android:text="@string/actual"
+                            android:drawablePadding="4dp"
+                            android:includeFontPadding="true"
+                            android:gravity="clip_vertical|center_horizontal|center_vertical"
+                            android:layout_marginTop="8dp"
+                            android:layout_marginBottom="6dp"
+                            app:layout_constraintBottom_toTopOf="@+id/Kg_result_title"
+                            app:layout_constraintStart_toStartOf="@+id/imageview_profile"
+                            app:layout_constraintTop_toBottomOf="@+id/imageview_profile" />
+
+                    <TextView
+                            android:id="@+id/actual_weight_profile"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="16sp"
+                            android:text="@{viewModel.lastWeight}"
+                            android:layout_marginStart="4dp"
+                            app:layout_constraintBottom_toBottomOf="@+id/title_actual_weight_profile"
+                            app:layout_constraintEnd_toEndOf="@+id/imageview_profile"
+                            app:layout_constraintHorizontal_bias="0.0"
+                            app:layout_constraintStart_toEndOf="@+id/title_actual_weight_profile"
+                            app:layout_constraintTop_toTopOf="@+id/title_actual_weight_profile"
+                            tools:text="45 Kg" />
+
+                    <TextView
+                            android:id="@+id/weight_target_title"
+                            android:text="@string/target"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textStyle="bold"
+                            android:textSize="16sp"
+                            android:gravity="center_vertical"
+                            android:drawableStart="@drawable/ic_star_black_24dp"
+                            android:drawableTint="@color/material_on_background_emphasis_medium"
+                            android:drawablePadding="4dp"
+                            android:includeFontPadding="true"
+                            android:layout_marginEnd="4dp"
+                            app:layout_constraintBottom_toBottomOf="@+id/actual_weight_profile"
+                            app:layout_constraintEnd_toStartOf="@+id/target_value"
+                            app:layout_constraintTop_toTopOf="@+id/actual_weight_profile" />
+
+                    <TextView
+                            android:id="@+id/target_value"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@{viewModel.target}"
+                            android:textSize="16sp"
+                            android:gravity="center_vertical"
+                            android:layout_marginEnd="4dp"
+                            app:layout_constraintBottom_toBottomOf="@+id/weight_target_title"
+                            app:layout_constraintEnd_toStartOf="@+id/goal"
+                            app:layout_constraintTop_toTopOf="@+id/weight_target_title"
+                            tools:text="26 Kg" />
+
+                    <TextView
+                            android:id="@+id/goal"
+                            android:text="@{viewModel.goal}"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="16sp"
+                            android:gravity="center_vertical"
+                            android:layout_marginEnd="8dp"
+                            android:fontFamily="sans-serif-light"
+                            app:layout_constraintBottom_toBottomOf="@+id/target_value"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="@+id/target_value"
+                            tools:text="(-4.0 Kg)" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/card_title_BMI"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/card_profile_info">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/profile_BMI_card"
+                        android:layout_width="match_parent"
+                        android:layout_height="34dp"
+                        android:background="@color/cardview_background"
+                        app:layout_constraintTop_toBottomOf="@+id/card_title_BMI"
+                        tools:layout_editor_absoluteX="8dp">
+
+                    <TextView
+                            android:id="@+id/bmi_title"
+                            android:text="@string/bmi"
+                            android:layout_width="40dp"
+                            android:layout_height="wrap_content"
+                            android:textSize="16sp"
+                            android:textStyle="bold"
+                            android:layout_marginTop="8dp"
+                            android:layout_marginStart="8dp"
+                            android:layout_marginBottom="8dp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                            android:id="@+id/value_bmi"
+                            android:text="@{viewModel.bmi}"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="16sp"
+                            android:layout_marginStart="4dp"
+                            app:layout_constraintBottom_toBottomOf="@+id/bmi_title"
+                            app:layout_constraintStart_toEndOf="@+id/bmi_title"
+                            app:layout_constraintTop_toTopOf="@+id/bmi_title"
+                            app:layout_constraintVertical_bias="0.0"
+                            tools:text="14" />
+
+                    <TextView
+                            android:id="@+id/weight_bmi"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="18sp"
+                            android:textStyle="bold"
+                            android:layout_marginTop="8dp"
+                            android:drawableStart="@drawable/ic_scale"
+                            android:drawableTint="@color/white_50"
+                            android:layout_marginEnd="5dp"
+                            android:scaleY="0.8"
+                            android:scaleX="0.8"
+                            android:layout_marginBottom="8dp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toStartOf="@+id/textView4"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                            android:id="@+id/textView4"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="16sp"
+                            android:text="@{viewModel.lastWeight}"
+                            android:layout_marginEnd="8dp"
+                            app:layout_constraintBottom_toBottomOf="@+id/weight_bmi"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="@+id/weight_bmi"
+                            tools:text="45 Kg" />
+
+                    <TextView
+                            android:id="@+id/textView"
+                            android:text="@{viewModel.bmiStatus}"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="16sp"
+                            android:drawableTint="@color/material_on_background_emphasis_medium"
+                            android:drawablePadding="6dp"
+                            android:gravity="center"
+                            android:fontFamily="sans-serif-medium"
+                            app:bmiStatus="@{viewModel.bmi}"
+                            app:layout_constraintBottom_toBottomOf="@+id/value_bmi"
+                            app:layout_constraintEnd_toStartOf="@+id/divider"
+                            app:layout_constraintStart_toEndOf="@+id/value_bmi"
+                            app:layout_constraintTop_toTopOf="@+id/value_bmi"
+                            tools:text="statusBMI" />
+
+                    <TextView
+                            android:id="@+id/height_title"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:drawableStart="@drawable/ic_height_24px"
+                            android:drawableTint="@color/white_50"
+                            android:layout_marginTop="8dp"
+                            android:layout_marginBottom="8dp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toStartOf="@+id/height_value"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                            android:id="@+id/height_value"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="16sp"
+                            android:layout_marginEnd="8dp"
+                            app:layout_constraintBottom_toBottomOf="@+id/height_title"
+                            app:layout_constraintEnd_toStartOf="@+id/divider5"
+                            app:layout_constraintTop_toTopOf="@+id/height_title"
+                            app:text="@{viewModel.height}"
+                            tools:text="12 Kg" />
+
+                    <View
+                            android:id="@+id/divider5"
+                            android:layout_width="2dp"
+                            android:layout_height="0dp"
+                            android:background="@color/black_800"
+                            android:layout_marginEnd="8dp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toStartOf="@+id/weight_bmi"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                    <View
+                            android:id="@+id/divider"
+                            android:layout_width="2dp"
+                            android:layout_height="0dp"
+                            android:background="@color/black_800"
+                            android:layout_marginEnd="4dp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toStartOf="@+id/height_title"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/card_graph_BMI"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="2dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/card_title_BMI">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/profile_graph_BMI_card"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/cardview_background"
+                        app:layout_constraintTop_toBottomOf="@+id/card_graph_BMI"
+                        tools:layout_editor_absoluteX="8dp">
+
+
+                    <com.github.mikephil.charting.charts.ScatterChart
+                            android:id="@+id/scatterChart_BMI"
+                            android:padding="9dp"
+                            android:layout_width="0dp"
+                            android:layout_height="160dp"
+                            android:layout_marginBottom="8dp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="0.0"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent">
+
+                    </com.github.mikephil.charting.charts.ScatterChart>
+
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/card_menu_profile"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+                    android:layout_margin="8dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/card_graph_BMI">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/layout_menu_profile"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/cardview_background"
+                        app:layout_constraintTop_toBottomOf="@+id/card_menu_profile"
+                        tools:layout_editor_absoluteX="8dp">
+
+                    <TextView
+                            android:id="@+id/item_menu_my_profile"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:textSize="16sp"
+                            android:layout_marginEnd="8dp"
+                            android:drawableEnd="@drawable/ic_keyboard_arrow_right_black_24dp"
+                            android:drawableTint="@color/material_on_background_emphasis_medium"
+                            android:drawableStart="@drawable/ic_person_black_24dp"
+                            android:text="@string/my_profile"
+                            android:layout_marginTop="8dp"
+                            android:paddingStart="6dp"
+                            android:paddingEnd="2dp"
+                            android:drawablePadding="6dp"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                    <View
+                            android:id="@+id/my_profile_divider"
+                            android:layout_width="0dp"
+                            android:layout_height="1dp"
+                            android:background="?android:attr/listDivider"
+                            android:layout_marginTop="8dp"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/item_menu_my_profile" />
+
+                    <TextView
+                            android:id="@+id/item_menu_nutrition"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:textSize="16sp"
+                            android:layout_marginEnd="8dp"
+                            android:drawableEnd="@drawable/ic_keyboard_arrow_right_black_24dp"
+                            android:drawableTint="@color/material_on_background_emphasis_medium"
+                            android:drawableStart="@drawable/ic_pie_chart_black_24dp"
+                            android:text="@string/nutrition"
+                            android:paddingStart="6dp"
+                            android:paddingEnd="2dp"
+                            android:layout_marginTop="8dp"
+                            android:drawablePadding="6dp"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@id/my_profile_divider" />
+
+                    <View
+                            android:id="@+id/nutrition_divider"
+                            android:layout_width="0dp"
+                            android:layout_height="1dp"
+                            android:background="?android:attr/listDivider"
+                            android:layout_marginTop="8dp"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/item_menu_nutrition" />
+
+                    <TextView
+                            android:id="@+id/item_menu_settings"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:textSize="16sp"
+                            android:layout_marginEnd="8dp"
+                            android:drawableEnd="@drawable/ic_keyboard_arrow_right_black_24dp"
+                            android:drawableTint="@color/material_on_background_emphasis_medium"
+                            android:drawableStart="@drawable/ic_settings_black_24dp"
+                            android:text="@string/settings"
+                            android:paddingStart="6dp"
+                            android:paddingEnd="2dp"
+                            android:layout_marginTop="8dp"
+                            android:drawablePadding="6dp"
+                            android:layout_marginBottom="8dp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@id/nutrition_divider" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <ProgressBar
+                    android:id="@+id/loading_spinner"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_gravity="center"
+                    android:visibility="gone"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginBottom="8dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.59000003"
+                    app:loadingStatus="@{viewModel.status}"
+                    tools:visibility="visible" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+</layout>

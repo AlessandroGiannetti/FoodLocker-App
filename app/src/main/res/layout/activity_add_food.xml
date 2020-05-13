@@ -1,0 +1,1063 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        tools:context="com.example.android.navigation.SearchFoodFragment">
+
+    <data>
+
+        <variable
+                name="viewModel"
+                type="com.letsbuildthatapp.foodlocker.ui.diary.addFood.AddFoodViewModel" />
+    </data>
+
+    <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:layout_editor_absoluteX="1dp"
+            tools:layout_editor_absoluteY="1dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+            <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/card"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginStart="8dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/profile_layout_card"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/cardview_background">
+
+                    <TextView
+                            android:id="@+id/title"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="18sp"
+                            android:text="@{viewModel.food.name}"
+                            android:maxLines="2"
+                            android:maxEms="17"
+                            android:layout_marginStart="8dp"
+                            android:layout_marginEnd="8dp"
+                            android:layout_marginTop="8dp"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="0.0"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            tools:text="kellog's special K" />
+
+                    <TextView
+                            android:id="@+id/subtitle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="15sp"
+                            android:maxLines="2"
+                            android:maxEms="20"
+                            android:text="@{viewModel.food.gmwt_desc1}"
+                            android:layout_marginStart="8dp"
+                            android:layout_marginEnd="8dp"
+                            android:layout_marginTop="2dp"
+                            android:fontFamily="sans-serif-light"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="0.0"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/title"
+                            tools:text="60 Gram" />
+
+                    <View
+                            android:id="@+id/title_divider_add_food"
+                            android:layout_width="0dp"
+                            android:layout_height="2dp"
+                            android:background="?android:attr/listDivider"
+                            android:layout_marginTop="8dp"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/subtitle" />
+
+                    <com.github.mikephil.charting.charts.PieChart
+                            android:id="@+id/pie_chart"
+                            android:padding="9dp"
+                            android:layout_width="90dp"
+                            android:layout_height="90dp"
+                            android:layout_marginStart="8dp"
+                            android:layout_marginTop="8dp"
+                            android:layout_marginBottom="8dp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="0.0"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/title_divider_add_food">
+
+                    </com.github.mikephil.charting.charts.PieChart>
+
+                    <TextView
+                            android:id="@+id/carbohydrates_title"
+                            android:text="@string/carbohydrates"
+                            android:layout_width="97dp"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/carbo"
+                            android:textSize="13sp"
+                            android:layout_marginBottom="8dp"
+                            android:layout_marginTop="8dp"
+                            android:gravity="center"
+                            android:textStyle="bold"
+                            app:layout_constraintBottom_toBottomOf="@+id/pie_chart"
+                            app:layout_constraintEnd_toStartOf="@+id/fats_title"
+                            app:layout_constraintHorizontal_bias="0.5"
+                            app:layout_constraintStart_toEndOf="@+id/pie_chart"
+                            app:layout_constraintTop_toBottomOf="@+id/title_divider_add_food"
+                            app:layout_constraintVertical_bias="1.0" />
+
+                    <TextView
+                            android:id="@+id/fats_title"
+                            android:text="@string/fats"
+                            android:layout_width="98dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:textColor="@color/fat"
+                            android:textSize="13sp"
+                            android:layout_marginBottom="8dp"
+                            android:gravity="center"
+                            android:textStyle="bold"
+                            app:layout_constraintBottom_toBottomOf="@+id/pie_chart"
+                            app:layout_constraintEnd_toStartOf="@+id/proteins_title"
+                            app:layout_constraintHorizontal_bias="0.5"
+                            app:layout_constraintStart_toEndOf="@+id/carbohydrates_title"
+                            app:layout_constraintTop_toBottomOf="@+id/title_divider_add_food"
+                            app:layout_constraintVertical_bias="1.0" />
+
+                    <TextView
+                            android:id="@+id/proteins_title"
+                            android:text="@string/proteins"
+                            android:layout_width="98dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="8dp"
+                            android:layout_marginTop="8dp"
+                            android:textColor="@color/proteins"
+                            android:textSize="13sp"
+                            android:gravity="center"
+                            android:textStyle="bold"
+                            app:layout_constraintBottom_toBottomOf="@+id/pie_chart"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="0.5"
+                            app:layout_constraintStart_toEndOf="@+id/fats_title"
+                            app:layout_constraintTop_toBottomOf="@+id/title_divider_add_food"
+                            app:layout_constraintVertical_bias="1.0" />
+
+                    <TextView
+                            android:id="@+id/carbohydrates_val_g"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="8dp"
+                            android:text="@{viewModel.food.carbohydrt_g}"
+                            android:textStyle="bold"
+                            android:textSize="16sp"
+                            android:layout_marginStart="16dp"
+                            app:layout_constraintBottom_toTopOf="@+id/carbohydrates_title"
+                            app:layout_constraintEnd_toStartOf="@+id/unit_carb"
+                            app:layout_constraintStart_toStartOf="@+id/carbohydrates_title"
+                            tools:text="0" />
+
+                    <TextView
+                            android:id="@+id/carbohydrates_perc"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="8dp"
+                            android:textSize="13sp"
+                            android:text="@{viewModel.carbPerc}"
+                            android:layout_marginTop="8dp"
+                            app:layout_constraintBottom_toTopOf="@+id/carbohydrates_val_g"
+                            app:layout_constraintEnd_toEndOf="@+id/carbohydrates_title"
+                            app:layout_constraintStart_toStartOf="@+id/carbohydrates_title"
+                            app:layout_constraintTop_toTopOf="@+id/pie_chart"
+                            tools:text="0 %" />
+
+                    <TextView
+                            android:id="@+id/fats_val_g"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="8dp"
+                            android:text="@{viewModel.food.lipid_tot_g}"
+
+                            android:textStyle="bold"
+                            android:textSize="16sp"
+                            android:layout_marginStart="16dp"
+                            app:layout_constraintBottom_toTopOf="@+id/fats_title"
+                            app:layout_constraintEnd_toStartOf="@+id/unit_fat"
+                            app:layout_constraintStart_toStartOf="@+id/fats_title"
+                            tools:text="0" />
+
+                    <TextView
+                            android:id="@+id/fats_perc"
+                            android:text="@{viewModel.fatPerc}"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="8dp"
+                            android:layout_marginTop="8dp"
+                            android:textSize="13sp"
+                            app:layout_constraintBottom_toTopOf="@+id/fats_val_g"
+                            app:layout_constraintEnd_toEndOf="@+id/fats_title"
+                            app:layout_constraintStart_toStartOf="@+id/fats_title"
+                            app:layout_constraintTop_toTopOf="@+id/pie_chart"
+                            tools:text="0 %" />
+
+                    <TextView
+                            android:id="@+id/proteins_val_g"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="16sp"
+                            android:text="@{viewModel.food.protein_g}"
+                            android:textStyle="bold"
+                            android:layout_marginBottom="8dp"
+                            android:layout_marginStart="16dp"
+                            app:layout_constraintBottom_toTopOf="@+id/proteins_title"
+                            app:layout_constraintEnd_toStartOf="@+id/unit_pro"
+                            app:layout_constraintStart_toStartOf="@+id/proteins_title"
+                            tools:text="0" />
+
+                    <TextView
+                            android:id="@+id/proteins_perc"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="13sp"
+                            android:text="@{viewModel.proPerc}"
+                            android:layout_marginBottom="8dp"
+                            android:layout_marginTop="8dp"
+                            app:layout_constraintBottom_toTopOf="@+id/proteins_val_g"
+                            app:layout_constraintEnd_toEndOf="@+id/proteins_title"
+                            app:layout_constraintStart_toStartOf="@+id/proteins_title"
+                            app:layout_constraintTop_toTopOf="@+id/pie_chart"
+                            tools:text="0 %" />
+
+                    <TextView
+                            android:id="@+id/unit_carb"
+                            android:text="@string/g"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textStyle="bold"
+                            android:textSize="16sp"
+                            android:layout_marginEnd="16dp"
+                            app:layout_constraintBottom_toBottomOf="@+id/carbohydrates_val_g"
+                            app:layout_constraintEnd_toEndOf="@+id/carbohydrates_title"
+                            app:layout_constraintStart_toEndOf="@+id/carbohydrates_val_g"
+                            app:layout_constraintTop_toTopOf="@+id/carbohydrates_val_g" />
+
+                    <TextView
+                            android:id="@+id/unit_pro"
+                            android:text="@string/g"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textStyle="bold"
+                            android:textSize="16sp"
+                            android:layout_marginEnd="16dp"
+                            app:layout_constraintBottom_toBottomOf="@+id/proteins_val_g"
+                            app:layout_constraintEnd_toEndOf="@+id/proteins_title"
+                            app:layout_constraintStart_toEndOf="@+id/proteins_val_g"
+                            app:layout_constraintTop_toTopOf="@+id/proteins_val_g" />
+
+                    <TextView
+                            android:id="@+id/unit_fat"
+                            android:text="@string/g"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textStyle="bold"
+                            android:textSize="16sp"
+                            android:layout_marginEnd="16dp"
+                            app:layout_constraintBottom_toBottomOf="@+id/fats_val_g"
+                            app:layout_constraintEnd_toEndOf="@+id/fats_title"
+                            app:layout_constraintStart_toEndOf="@+id/fats_val_g"
+                            app:layout_constraintTop_toTopOf="@+id/fats_val_g" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <TextView
+                    android:id="@+id/nutritional_values_title"
+                    android:text="@string/nutritional_values"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:textSize="17sp"
+                    android:layout_marginTop="16dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/card" />
+
+            <TextView
+                    android:id="@+id/calories_title_nutr"
+                    android:text="@string/calories"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:textStyle="bold"
+                    android:layout_marginTop="4dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/nutritional_values_title" />
+
+            <TextView
+                    android:id="@+id/col_title_nutr"
+                    android:text="@string/cholesterol"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:textStyle="bold"
+                    android:layout_marginTop="4dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/divider13" />
+
+            <TextView
+                    android:id="@+id/sodium_title_nutr"
+                    android:text="@string/sodium"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:textStyle="bold"
+                    android:layout_marginTop="4dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/divider14" />
+
+            <TextView
+                    android:id="@+id/tot_carbo_title_nutr"
+                    android:text="@string/total_carbohydrates"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:textStyle="bold"
+                    android:layout_marginTop="4dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/divider15" />
+
+            <TextView
+                    android:id="@+id/pro_title_nutr"
+                    android:text="@string/proteins"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:textStyle="bold"
+                    android:layout_marginTop="4dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/divider19" />
+
+            <TextView
+                    android:id="@+id/vit_d_nutr"
+                    android:text="@string/vitamin_d"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:textStyle="bold"
+                    android:layout_marginTop="4dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/divider20" />
+
+            <TextView
+                    android:id="@+id/calcium_title"
+                    android:text="@string/calcium"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:textStyle="bold"
+                    android:layout_marginTop="4dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/divider21" />
+
+            <TextView
+                    android:id="@+id/iron_title"
+                    android:text="@string/iron"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:textStyle="bold"
+                    android:layout_marginTop="4dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/divider22" />
+
+            <TextView
+                    android:id="@+id/potassium_title"
+                    android:text="@string/potassium"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:textStyle="bold"
+                    android:layout_marginTop="4dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/divider23" />
+
+            <TextView
+                    android:id="@+id/vit_c_title"
+                    android:text="@string/vitamin_c"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:textStyle="bold"
+                    android:layout_marginTop="4dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/divider24" />
+
+            <TextView
+                    android:id="@+id/vit_b6_title"
+                    android:text="@string/vitamin_b6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:textStyle="bold"
+                    android:layout_marginTop="4dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/divider25" />
+
+            <TextView
+                    android:id="@+id/vit_b12_title"
+                    android:text="@string/vitamin_b12"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:textStyle="bold"
+                    android:layout_marginTop="4dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/divider26" />
+
+            <TextView
+                    android:id="@+id/calories_val"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{viewModel.food.energy_kcal}"
+                    android:textStyle="bold"
+                    android:layout_marginTop="4dp"
+                    app:layout_constraintEnd_toStartOf="@+id/calories_val_unit"
+                    app:layout_constraintTop_toBottomOf="@+id/nutritional_values_title"
+                    tools:text="200" />
+
+            <TextView
+                    android:id="@+id/total_fat_val"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{viewModel.food.fa_sat_g}"
+                    android:textStyle="bold"
+                    android:layout_marginTop="4dp"
+                    app:layout_constraintEnd_toStartOf="@+id/total_fat_unit"
+                    app:layout_constraintTop_toBottomOf="@+id/divider_calories"
+                    tools:text="200" />
+
+            <TextView
+                    android:id="@+id/sat_fat_val"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{viewModel.food.lipid_tot_g}"
+                    android:layout_marginTop="4dp"
+                    android:fontFamily="sans-serif-light"
+                    app:layout_constraintEnd_toStartOf="@+id/sat_fat_unit"
+                    app:layout_constraintTop_toBottomOf="@+id/divider10"
+                    tools:text="200" />
+
+            <TextView
+                    android:id="@+id/pol_fat_val"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{viewModel.food.fa_poly_g}"
+                    android:layout_marginTop="4dp"
+                    android:fontFamily="sans-serif-light"
+                    app:layout_constraintEnd_toStartOf="@+id/pol_fat_unit"
+                    app:layout_constraintTop_toBottomOf="@+id/divider11"
+                    tools:text="200" />
+
+            <TextView
+                    android:id="@+id/mon_fat_val"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{viewModel.food.fa_mono_g}"
+                    android:layout_marginTop="4dp"
+                    android:fontFamily="sans-serif-light"
+                    app:layout_constraintEnd_toStartOf="@+id/mon_fat_unit"
+                    app:layout_constraintTop_toBottomOf="@+id/divider12"
+                    tools:text="200" />
+
+            <TextView
+                    android:id="@+id/chol_val"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{viewModel.food.cholestrl_mg}"
+                    android:textStyle="bold"
+                    android:layout_marginTop="4dp"
+                    app:layout_constraintEnd_toStartOf="@+id/chol_unit"
+                    app:layout_constraintTop_toBottomOf="@+id/divider13"
+                    tools:text="200" />
+
+            <TextView
+                    android:id="@+id/sodium_val"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{viewModel.food.sodium_mg}"
+                    android:textStyle="bold"
+                    android:layout_marginTop="4dp"
+                    app:layout_constraintEnd_toStartOf="@+id/sodium_unit"
+                    app:layout_constraintTop_toBottomOf="@+id/divider14"
+                    tools:text="200" />
+
+            <TextView
+                    android:id="@+id/tot_carb_val"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{viewModel.food.carbohydrt_g}"
+                    android:textStyle="bold"
+                    android:layout_marginTop="4dp"
+                    app:layout_constraintEnd_toStartOf="@+id/carb_unit_nutr"
+                    app:layout_constraintTop_toBottomOf="@+id/divider15"
+                    tools:text="200" />
+
+            <TextView
+                    android:id="@+id/pro_val_nutr"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{viewModel.food.protein_g}"
+                    android:textStyle="bold"
+                    android:layout_marginTop="4dp"
+                    app:layout_constraintEnd_toStartOf="@+id/pro_unit_nutr"
+                    app:layout_constraintTop_toBottomOf="@+id/divider19"
+                    tools:text="200" />
+
+            <TextView
+                    android:id="@+id/vit_d_val"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{viewModel.food.protein_g}"
+                    android:textStyle="bold"
+                    android:layout_marginTop="4dp"
+                    app:layout_constraintEnd_toStartOf="@+id/vit_d_unit"
+                    app:layout_constraintTop_toBottomOf="@+id/divider20"
+                    tools:text="200" />
+
+            <TextView
+                    android:id="@+id/calcium_val"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{viewModel.food.calcium_mg}"
+                    android:textStyle="bold"
+                    android:layout_marginTop="4dp"
+                    app:layout_constraintEnd_toStartOf="@+id/calcium_unit"
+                    app:layout_constraintTop_toBottomOf="@+id/divider21"
+                    tools:text="200" />
+
+            <TextView
+                    android:id="@+id/iron_val"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{viewModel.food.iron_mg}"
+                    android:textStyle="bold"
+                    android:layout_marginTop="4dp"
+                    app:layout_constraintEnd_toStartOf="@+id/iron_unit"
+                    app:layout_constraintTop_toBottomOf="@+id/divider22"
+                    tools:text="200" />
+
+            <TextView
+                    android:id="@+id/potassium_val"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{viewModel.food.potassium_mg}"
+                    android:textStyle="bold"
+                    android:layout_marginTop="4dp"
+                    app:layout_constraintEnd_toStartOf="@+id/potassium_unit"
+                    app:layout_constraintTop_toBottomOf="@+id/divider23"
+                    tools:text="200" />
+
+            <TextView
+                    android:id="@+id/vit_c_val"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{viewModel.food.vit_c_mg}"
+                    android:textStyle="bold"
+                    android:layout_marginTop="4dp"
+                    app:layout_constraintEnd_toStartOf="@+id/vit_c_unit"
+                    app:layout_constraintTop_toBottomOf="@+id/divider24"
+                    tools:text="200" />
+
+            <TextView
+                    android:id="@+id/vit_b6_val"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{viewModel.food.vit_b6_mg}"
+                    android:textStyle="bold"
+                    android:layout_marginTop="4dp"
+                    app:layout_constraintEnd_toStartOf="@+id/vit_b6_unit"
+                    app:layout_constraintTop_toBottomOf="@+id/divider25"
+                    tools:text="200" />
+
+            <TextView
+                    android:id="@+id/vit_b12_val"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{viewModel.food.vit_b12}"
+                    android:textStyle="bold"
+                    android:layout_marginTop="4dp"
+                    app:layout_constraintEnd_toStartOf="@+id/vit_b12_unit"
+                    app:layout_constraintTop_toBottomOf="@+id/divider26"
+                    tools:text="200" />
+
+            <TextView
+                    android:id="@+id/sugar_val"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{viewModel.food.vit_d}"
+                    android:layout_marginTop="4dp"
+                    android:fontFamily="sans-serif-light"
+                    app:layout_constraintEnd_toStartOf="@+id/sugar_unit"
+                    app:layout_constraintTop_toBottomOf="@+id/divider17"
+                    tools:text="200" />
+
+            <TextView
+                    android:id="@+id/fiber_val"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{viewModel.food.fiber_td_g}"
+                    android:layout_marginTop="4dp"
+                    android:fontFamily="sans-serif-light"
+                    app:layout_constraintEnd_toStartOf="@+id/fiber_unit"
+                    app:layout_constraintTop_toBottomOf="@+id/divider16"
+                    tools:text="200" />
+
+            <TextView
+                    android:id="@+id/calories_val_unit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/kcal"
+                    android:layout_marginEnd="8dp"
+                    android:textStyle="bold"
+                    android:layout_marginTop="4dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/nutritional_values_title" />
+
+            <TextView
+                    android:id="@+id/total_fat_unit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/g"
+                    android:layout_marginEnd="8dp"
+                    android:textStyle="bold"
+                    android:layout_marginTop="4dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/divider_calories" />
+
+            <TextView
+                    android:id="@+id/sat_fat_unit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/g"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginTop="4dp"
+                    android:fontFamily="sans-serif-light"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/divider10" />
+
+            <TextView
+                    android:id="@+id/pol_fat_unit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/g"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginTop="4dp"
+                    android:fontFamily="sans-serif-light"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/divider11" />
+
+            <TextView
+                    android:id="@+id/mon_fat_unit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/g"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginTop="4dp"
+                    android:fontFamily="sans-serif-light"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/divider12" />
+
+            <TextView
+                    android:id="@+id/chol_unit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/mg"
+                    android:layout_marginEnd="8dp"
+                    android:textStyle="bold"
+                    android:layout_marginTop="4dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/divider13" />
+
+            <TextView
+                    android:id="@+id/sodium_unit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/mg"
+                    android:layout_marginEnd="8dp"
+                    android:textStyle="bold"
+                    android:layout_marginTop="4dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/divider14" />
+
+            <TextView
+                    android:id="@+id/calcium_unit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/mg"
+                    android:layout_marginEnd="8dp"
+                    android:textStyle="bold"
+                    android:layout_marginTop="4dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/divider21" />
+
+            <TextView
+                    android:id="@+id/iron_unit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/mg"
+                    android:layout_marginEnd="8dp"
+                    android:textStyle="bold"
+                    android:layout_marginTop="4dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/divider22" />
+
+            <TextView
+                    android:id="@+id/potassium_unit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/mg"
+                    android:layout_marginEnd="8dp"
+                    android:textStyle="bold"
+                    android:layout_marginTop="4dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/divider23" />
+
+            <TextView
+                    android:id="@+id/vit_c_unit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/mg"
+                    android:layout_marginEnd="8dp"
+                    android:textStyle="bold"
+                    android:layout_marginTop="4dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/divider24" />
+
+            <TextView
+                    android:id="@+id/vit_b6_unit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/mg"
+                    android:layout_marginEnd="8dp"
+                    android:textStyle="bold"
+                    android:layout_marginTop="4dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/divider25" />
+
+            <TextView
+                    android:id="@+id/carb_unit_nutr"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/g"
+                    android:layout_marginEnd="8dp"
+                    android:textStyle="bold"
+                    android:layout_marginTop="4dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/divider15" />
+
+            <TextView
+                    android:id="@+id/pro_unit_nutr"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/g"
+                    android:layout_marginEnd="8dp"
+                    android:textStyle="bold"
+                    android:layout_marginTop="4dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/divider19" />
+
+            <TextView
+                    android:id="@+id/vit_d_unit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/micro_g"
+                    android:layout_marginEnd="8dp"
+                    android:textStyle="bold"
+                    android:layout_marginTop="4dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/divider20" />
+
+            <TextView
+                    android:id="@+id/vit_b12_unit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/micro_g"
+                    android:layout_marginEnd="8dp"
+                    android:textStyle="bold"
+                    android:layout_marginTop="4dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/divider26" />
+
+            <TextView
+                    android:id="@+id/fiber_unit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/g"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginTop="4dp"
+                    android:fontFamily="sans-serif-light"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/divider16" />
+
+            <TextView
+                    android:id="@+id/sugar_unit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/g"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginTop="4dp"
+                    android:fontFamily="sans-serif-light"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/divider17" />
+
+            <View
+                    android:id="@+id/divider_calories"
+                    android:layout_width="0dp"
+                    android:layout_height="1dp"
+                    android:background="?android:attr/listDivider"
+                    android:layout_marginTop="4dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="1.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/calories_title_nutr" />
+
+            <TextView
+                    android:id="@+id/total_fat_title"
+                    android:text="@string/total_fat"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:textStyle="bold"
+                    android:layout_marginTop="4dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/divider_calories" />
+
+            <TextView
+                    android:id="@+id/sat_fat_title"
+                    android:text="@string/saturated_fats"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="4dp"
+                    android:fontFamily="sans-serif-light"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/divider10" />
+
+            <TextView
+                    android:id="@+id/fiber_title"
+                    android:text="@string/fiber"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="4dp"
+                    android:fontFamily="sans-serif-light"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/divider16" />
+
+            <TextView
+                    android:id="@+id/sugar_title"
+                    android:text="@string/sugar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="4dp"
+                    android:fontFamily="sans-serif-light"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/divider17" />
+
+            <TextView
+                    android:id="@+id/pol_fat_title"
+                    android:text="@string/polyunsaturated_fats"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="4dp"
+                    android:fontFamily="sans-serif-light"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/divider11" />
+
+            <TextView
+                    android:id="@+id/mon_fat_title"
+                    android:text="@string/monounsaturated_fats"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="4dp"
+                    android:fontFamily="sans-serif-light"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/divider12" />
+
+            <View
+                    android:id="@+id/divider10"
+                    android:layout_width="0dp"
+                    android:layout_height="1dp"
+                    android:background="?android:attr/listDivider"
+                    android:layout_marginTop="4dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/total_fat_title" />
+
+            <View
+                    android:id="@+id/divider11"
+                    android:layout_width="0dp"
+                    android:layout_height="1dp"
+                    android:background="?android:attr/listDivider"
+                    android:layout_marginTop="4dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/sat_fat_title" />
+
+            <View
+                    android:id="@+id/divider12"
+                    android:layout_width="0dp"
+                    android:layout_height="1dp"
+                    android:background="?android:attr/listDivider"
+                    android:layout_marginTop="4dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/pol_fat_title" />
+
+            <View
+                    android:id="@+id/divider13"
+                    android:layout_width="0dp"
+                    android:layout_height="1dp"
+                    android:background="?android:attr/listDivider"
+                    android:layout_marginTop="4dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/mon_fat_title" />
+
+            <View
+                    android:id="@+id/divider14"
+                    android:layout_width="0dp"
+                    android:layout_height="1dp"
+                    android:background="?android:attr/listDivider"
+                    android:layout_marginTop="4dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/col_title_nutr" />
+
+            <View
+                    android:id="@+id/divider15"
+                    android:layout_width="0dp"
+                    android:layout_height="1dp"
+                    android:background="?android:attr/listDivider"
+                    android:layout_marginTop="4dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/sodium_title_nutr" />
+
+            <View
+                    android:id="@+id/divider16"
+                    android:layout_width="0dp"
+                    android:layout_height="1dp"
+                    android:background="?android:attr/listDivider"
+                    android:layout_marginTop="4dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tot_carbo_title_nutr" />
+
+            <View
+                    android:id="@+id/divider17"
+                    android:layout_width="0dp"
+                    android:layout_height="1dp"
+                    android:background="?android:attr/listDivider"
+                    android:layout_marginTop="4dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/fiber_title" />
+
+            <View
+                    android:id="@+id/divider19"
+                    android:layout_width="0dp"
+                    android:layout_height="1dp"
+                    android:background="?android:attr/listDivider"
+                    android:layout_marginTop="4dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/sugar_title" />
+
+            <View
+                    android:id="@+id/divider20"
+                    android:layout_width="0dp"
+                    android:layout_height="1dp"
+                    android:background="?android:attr/listDivider"
+                    android:layout_marginTop="4dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/pro_title_nutr" />
+
+            <View
+                    android:id="@+id/divider21"
+                    android:layout_width="0dp"
+                    android:layout_height="1dp"
+                    android:background="?android:attr/listDivider"
+                    android:layout_marginTop="4dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/vit_d_nutr" />
+
+            <View
+                    android:id="@+id/divider22"
+                    android:layout_width="0dp"
+                    android:layout_height="1dp"
+                    android:background="?android:attr/listDivider"
+                    android:layout_marginTop="4dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/calcium_title" />
+
+            <View
+                    android:id="@+id/divider23"
+                    android:layout_width="0dp"
+                    android:layout_height="1dp"
+                    android:background="?android:attr/listDivider"
+                    android:layout_marginTop="4dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/iron_title" />
+
+            <View
+                    android:id="@+id/divider24"
+                    android:layout_width="0dp"
+                    android:layout_height="1dp"
+                    android:background="?android:attr/listDivider"
+                    android:layout_marginTop="4dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/potassium_title" />
+
+            <View
+                    android:id="@+id/divider25"
+                    android:layout_width="0dp"
+                    android:layout_height="1dp"
+                    android:background="?android:attr/listDivider"
+                    android:layout_marginTop="4dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/vit_c_title" />
+
+            <View
+                    android:id="@+id/divider26"
+                    android:layout_width="0dp"
+                    android:layout_height="1dp"
+                    android:background="?android:attr/listDivider"
+                    android:layout_marginTop="4dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/vit_b6_title" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+</layout>

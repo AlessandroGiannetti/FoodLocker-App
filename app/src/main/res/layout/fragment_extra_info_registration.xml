@@ -1,0 +1,306 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        tools:context="com.example.android.navigation.ExtraInfoRegistrationFragment">
+
+    <data>
+
+        <variable
+                name="viewModel"
+                type="com.letsbuildthatapp.foodlocker.ui.registration.ExtraInfoRegistrationViewModel" />
+    </data>
+
+    <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+            <ImageView
+                    android:id="@+id/imageView3"
+                    android:layout_width="170dp"
+                    android:layout_height="170dp"
+                    android:src="@mipmap/ic_logo_background"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:scaleType="centerInside"
+                    android:scaleX="3"
+                    android:scaleY="3"
+                    android:contentDescription="@string/foodLocker_logo"
+                    app:layout_constraintBottom_toTopOf="@+id/dateBirthday_text_input"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/dateBirthday_text_input"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:theme="@style/TextInputLayoutStyle"
+                    android:layout_marginEnd="8dp"
+                    android:onClick="showDatePickerDialog"
+                    android:layout_marginBottom="8dp"
+                    app:endIconDrawable="@drawable/ic_birthday"
+                    app:endIconMode="custom"
+                    app:error="@{viewModel.dateOfBirthdayError}"
+                    app:errorEnabled="true"
+                    app:layout_constraintBottom_toTopOf="@+id/weight_text_input"
+                    app:layout_constraintEnd_toStartOf="@+id/gender_edittext"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/imageView3">
+
+                <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/dateBirthday_edittext_register"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/date_of_birthday"
+                        android:inputType="none"
+                        android:focusable="false"
+                        android:onClick="showDatePickerDialog" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/gender_edittext"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                    android:theme="@style/DropDownLayoutStyle"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:textColorHint="@color/material_on_background_emphasis_medium"
+                    app:error="@{viewModel.genderError}"
+                    app:errorEnabled="true"
+                    app:layout_constraintBottom_toBottomOf="@+id/dateBirthday_text_input"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/dateBirthday_text_input"
+                    app:layout_constraintTop_toTopOf="@+id/dateBirthday_text_input">
+
+                <AutoCompleteTextView
+                        android:id="@+id/gender_exposed_dropdown"
+                        android:layout_width="match_parent"
+                        android:hint="@string/gender"
+
+                        android:text="@={viewModel.gender}"
+                        android:layout_height="wrap_content"
+                        android:focusable="false"
+                        android:inputType="none" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/weight_text_input"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_width="0dp"
+                    android:theme="@style/TextInputLayoutStyle"
+                    android:layout_marginBottom="8dp"
+                    android:layout_marginEnd="8dp"
+                    app:endIconDrawable="@drawable/ic_scale"
+                    app:endIconMode="custom"
+                    app:error="@{viewModel.weightKgError}"
+                    app:errorEnabled="true"
+                    app:helperText="unit of measurement: Kg"
+                    app:helperTextEnabled="true"
+                    app:layout_constraintBottom_toTopOf="@+id/height_text_input"
+                    app:layout_constraintEnd_toStartOf="@+id/weight_target_text_input"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/dateBirthday_text_input">
+
+                <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/weight_edittext_register"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/weight"
+                        android:text="@={viewModel.weightKg}"
+                        android:inputType="number" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/weight_target_text_input"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
+                    android:theme="@style/TextInputLayoutStyle"
+                    android:layout_marginStart="8dp"
+                    app:endIconDrawable="@drawable/ic_stars_black_24dp"
+                    app:endIconMode="custom"
+                    app:error="@{viewModel.targetWeightKgError}"
+                    app:errorEnabled="true"
+                    app:helperText="unit of measurement: Kg"
+                    app:helperTextEnabled="true"
+                    app:layout_constraintBottom_toBottomOf="@+id/weight_text_input"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toEndOf="@+id/weight_text_input"
+                    app:layout_constraintTop_toTopOf="@+id/weight_text_input">
+
+                <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/weight_target_edittext_register"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@={viewModel.targetWeightKg}"
+                        android:hint="@string/weight_target"
+                        android:inputType="number" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/height_text_input"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:theme="@style/TextInputLayoutStyle"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginBottom="8dp"
+                    app:endIconDrawable="@drawable/ic_height_24px"
+                    app:endIconMode="custom"
+                    app:error="@{viewModel.heightMError}"
+                    app:errorEnabled="true"
+                    app:helperText="unit of measurement: cm"
+                    app:helperTextEnabled="true"
+                    app:layout_constraintBottom_toTopOf="@id/water_text_input"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="1.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/weight_target_text_input">
+
+                <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/height_edittext_register"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@={viewModel.heightM}"
+                        android:hint="@string/height_cm"
+                        android:inputType="number|numberDecimal" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/water_text_input"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:theme="@style/TextInputLayoutStyle"
+                    app:endIconDrawable="@drawable/ic_water"
+                    app:endIconMode="custom"
+                    app:error="@{viewModel.waterError}"
+                    app:errorEnabled="true"
+                    app:helperText="unit of measurement: L"
+                    app:helperTextEnabled="true"
+                    app:layout_constraintBottom_toTopOf="@+id/sport_time_text_input"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/height_text_input">
+
+                <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/water_edittext_register"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@={viewModel.water}"
+                        android:hint="@string/water_assumed_daily"
+                        android:inputType="number" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/daily_kcal_text_input"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:theme="@style/TextInputLayoutStyle"
+                    app:endIconDrawable="@drawable/ic_progress_black_24dp"
+                    app:endIconMode="custom"
+                    app:error="@{viewModel.dailyKcalError}"
+                    app:errorEnabled="true"
+                    app:helperText="Kcal daily taken on"
+                    app:helperTextEnabled="true"
+                    app:layout_constraintBottom_toBottomOf="@+id/sport_time_text_input"
+                    app:layout_constraintEnd_toStartOf="@+id/sport_time_text_input"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/sport_time_text_input">
+
+                <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/daily_kcal_edittext_register"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@={viewModel.dailyKcal}"
+                        android:hint="@string/daily_kcal_assumed"
+                        android:inputType="number" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/sport_time_text_input"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:theme="@style/TextInputLayoutStyle"
+                    android:layout_marginEnd="8dp"
+                    app:endIconDrawable="@drawable/ic_fitness_center_black_24dp"
+                    app:endIconMode="custom"
+                    app:error="@{viewModel.weaklyHourSportError}"
+                    app:errorEnabled="true"
+                    app:helperText="unit of measurement: h"
+                    app:helperTextEnabled="true"
+                    app:layout_constraintBottom_toTopOf="@+id/extraInfoRegister_button"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toEndOf="@+id/daily_kcal_text_input"
+                    app:layout_constraintTop_toBottomOf="@+id/water_text_input">
+
+                <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/sport_time_edittext_register"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@={viewModel.weaklyHourSport}"
+                        android:hint="@string/weakly_sport_time_hours"
+                        android:inputType="number" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <Button
+                    android:id="@+id/extraInfoRegister_button"
+                    style="@android:style/Widget.Material.Light.Button.Borderless.Colored"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/rounded_button"
+                    android:text="@string/add_information_and_log_in"
+                    android:onClick="@{(v) -> viewModel.regLogin(v)}"
+                    android:textColor="@android:color/white"
+                    android:textStyle="bold"
+                    android:layout_marginTop="8dp"
+                    android:textSize="18sp"
+                    android:backgroundTint="@color/accent_red"
+                    app:icon="@drawable/ic_login"
+                    app:layout_constraintBottom_toTopOf="@+id/snackBar_extraInfoRegistration"
+                    app:layout_constraintEnd_toEndOf="@+id/sport_time_text_input"
+                    app:layout_constraintStart_toStartOf="@+id/daily_kcal_text_input"
+                    app:layout_constraintTop_toBottomOf="@id/sport_time_text_input" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/snackBar_extraInfoRegistration"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="8dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/extraInfoRegister_button" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+</layout>

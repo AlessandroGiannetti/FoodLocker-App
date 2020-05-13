@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/mobile_navigation"
+        android:label="@string/following"
+        app:startDestination="@id/navigation_home">
+
+    <fragment
+            android:id="@+id/navigation_home"
+            android:name="com.letsbuildthatapp.foodlocker.ui.home.HomeFragment"
+            android:label="FoodLocker"
+            tools:layout="@layout/fragment_home" />
+
+    <fragment
+            android:id="@+id/navigation_diary"
+            android:name="com.letsbuildthatapp.foodlocker.ui.diary.DiaryFragment"
+            android:label="@string/title_diary"
+            tools:layout="@layout/fragment_diary">
+        <action
+                android:id="@+id/action_navigation_diary_to_searchFoodFragment"
+                app:destination="@id/searchFoodFragment"
+                app:enterAnim="@anim/fragment_close_enter"
+                app:exitAnim="@anim/fragment_close_exit"
+                tools:ignore="PrivateResource" />
+        <argument
+                android:name="mealType"
+                app:argType="string" />
+        <action
+                android:id="@+id/action_navigation_diary_to_searchSportFragment"
+                app:destination="@id/searchSportFragment"
+                app:enterAnim="@anim/fragment_close_enter"
+                app:exitAnim="@anim/fragment_close_exit"
+                tools:ignore="PrivateResource" />
+        <action
+                android:id="@+id/action_navigation_diary_to_Nutritions"
+                app:destination="@id/Nutritions"
+                app:enterAnim="@anim/fragment_close_enter"
+                app:exitAnim="@anim/fragment_close_exit"
+                tools:ignore="PrivateResource" />
+        <argument
+                android:name="daySelected"
+                app:argType="string" />
+    </fragment>
+
+    <fragment
+            android:id="@+id/navigation_progress"
+            android:name="com.letsbuildthatapp.foodlocker.ui.progress.ProgressFragment"
+            android:label="@string/title_progress"
+            tools:layout="@layout/fragment_progress" />
+
+    <fragment
+            android:id="@+id/navigation_profile"
+            android:name="com.letsbuildthatapp.foodlocker.ui.profile.ProfileFragment"
+            android:label="@string/my_profile"
+            tools:layout="@layout/fragment_profile">
+        <action
+                android:id="@+id/action_navigation_profile_to_followersFragment"
+                app:destination="@id/followersFragment"
+                app:enterAnim="@anim/fragment_close_enter"
+                app:exitAnim="@anim/fragment_close_exit"
+                tools:ignore="PrivateResource" />
+        <action
+                android:id="@+id/action_navigation_profile_to_followingsFragment"
+                app:destination="@id/followingsFragment"
+                app:enterAnim="@anim/fragment_close_enter"
+                app:exitAnim="@anim/fragment_close_exit"
+                tools:ignore="PrivateResource" />
+        <action
+                android:id="@+id/action_navigation_profile_to_myProfileFragment"
+                app:destination="@id/myProfileFragment"
+                app:enterAnim="@anim/fragment_close_enter"
+                app:exitAnim="@anim/fragment_close_exit"
+                tools:ignore="PrivateResource" />
+        <action
+                android:id="@+id/action_navigation_profile_to_nutritionFragment"
+                app:destination="@id/Nutritions"
+                app:enterAnim="@anim/fragment_close_enter"
+                app:exitAnim="@anim/fragment_close_exit"
+                tools:ignore="PrivateResource" />
+        <action
+                android:id="@+id/action_navigation_profile_to_settingsFragment"
+                app:destination="@id/settingsFragment"
+                app:enterAnim="@anim/fragment_close_enter"
+                app:exitAnim="@anim/fragment_close_exit"
+                tools:ignore="PrivateResource" />
+    </fragment>
+    <fragment
+            android:id="@+id/followersFragment"
+            android:name="com.letsbuildthatapp.foodlocker.ui.profile.followers.FollowersFragment"
+            android:label="@string/followers"
+            tools:layout="@layout/fragment_followers" />
+    <fragment
+            android:id="@+id/followingsFragment"
+            android:name="com.letsbuildthatapp.foodlocker.ui.profile.followings.FollowingsFragment"
+            android:label="FollowingsFragment"
+            tools:layout="@layout/fragment_following" />
+    <fragment
+            android:id="@+id/searchFoodFragment"
+            android:name="com.letsbuildthatapp.foodlocker.ui.diary.searchFood.SearchFoodFragment"
+            android:label="@string/search_food"
+            tools:layout="@layout/fragment_search_food" />
+    <fragment
+            android:id="@+id/searchSportFragment"
+            android:name="com.letsbuildthatapp.foodlocker.ui.diary.searchSport.SearchSportFragment"
+            android:label="@string/search_exercises"
+            tools:layout="@layout/fragment_search_sport" />
+    <fragment
+            android:id="@+id/myProfileFragment"
+            android:name="com.letsbuildthatapp.foodlocker.ui.profile.myProfile.MyProfileFragment"
+            android:label="@string/my_profile"
+            tools:layout="@layout/fragment_my_profile" />
+    <fragment
+            android:id="@+id/Nutritions"
+            android:name="com.letsbuildthatapp.foodlocker.ui.nutrition.NutritionFragment"
+            android:label="Macronutrients"
+            tools:layout="@layout/fragment_nutrition" />
+    <fragment
+            android:id="@+id/settingsFragment"
+            android:name="com.letsbuildthatapp.foodlocker.ui.profile.settings.SettingsFragment"
+            android:label="@string/settings"
+            tools:layout="@layout/fragment_settings" />
+</navigation>

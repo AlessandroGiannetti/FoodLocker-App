@@ -1,0 +1,758 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        tools:context="com.example.android.navigation.DiaryFragment">
+
+    <data>
+
+        <variable
+                name="viewModel"
+                type="com.letsbuildthatapp.foodlocker.ui.diary.DiaryViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        <com.google.android.material.card.MaterialCardView
+                android:id="@+id/card_day_navigation"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.0">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/diary_navigation_card_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="38dp"
+                    android:background="@color/cardview_background">
+
+                <TextView
+                        android:id="@+id/day_back"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="24sp"
+                        android:textStyle="bold"
+                        android:drawableStart="@drawable/ic_day_backdp"
+                        app:layout_constraintBottom_toTopOf="@+id/divider28"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                        android:id="@+id/day_fw"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="24sp"
+                        android:textStyle="bold"
+                        android:drawableStart="@drawable/ic_day_fwdp"
+                        app:layout_constraintBottom_toTopOf="@+id/divider28"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.0" />
+
+                <View
+                        android:id="@+id/divider27"
+                        android:layout_width="2dp"
+                        android:layout_height="0dp"
+                        android:background="?android:attr/listDivider"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/day_back"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                <View
+                        android:id="@+id/divider18"
+                        android:layout_width="2dp"
+                        android:layout_height="0dp"
+                        android:background="?android:attr/listDivider"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@+id/day_fw"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.0" />
+
+                <View
+                        android:id="@+id/divider28"
+                        android:layout_width="0dp"
+                        android:layout_height="2dp"
+                        android:background="?android:attr/listDivider"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent" />
+
+                <TextView
+                        android:id="@+id/day_selected"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="22sp"
+                        android:layout_marginBottom="4dp"
+                        android:layout_marginStart="8dp"
+                        android:text="@{viewModel.day.date}"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginTop="4dp"
+                        app:layout_constraintBottom_toTopOf="@+id/divider28"
+                        app:layout_constraintEnd_toStartOf="@+id/divider18"
+                        app:layout_constraintStart_toEndOf="@+id/divider27"
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:text="2020-03-16" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+
+        <com.google.android.material.card.MaterialCardView
+                android:id="@+id/card_progress"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/card_day_navigation">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/diary_calories_card"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/cardview_background">
+
+
+                <TextView
+                        android:id="@+id/target_kcal_title"
+                        android:text="@string/target_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="14sp"
+                        android:textStyle="bold"
+                        android:layout_marginBottom="8dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@+id/minus_kcal"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toStartOf="parent" />
+
+                <TextView
+                        android:id="@+id/init_kcal"
+                        android:layout_width="wrap_content"
+                        android:text="@{viewModel.targetKcal}"
+                        android:layout_height="wrap_content"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        android:layout_marginTop="8dp"
+                        app:layout_constraintBottom_toTopOf="@+id/target_kcal_title"
+                        app:layout_constraintEnd_toEndOf="@+id/target_kcal_title"
+                        app:layout_constraintStart_toStartOf="@+id/target_kcal_title"
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:text="2410" />
+
+                <TextView
+                        android:id="@+id/minus_kcal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/minus"
+                        android:textSize="30sp"
+                        app:layout_constraintBottom_toBottomOf="@+id/init_kcal"
+                        app:layout_constraintEnd_toStartOf="@+id/food_kcal_title"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toEndOf="@+id/target_kcal_title"
+                        app:layout_constraintTop_toTopOf="@+id/init_kcal" />
+
+                <TextView
+                        android:id="@+id/food_kcal_title"
+                        android:text="@string/food"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="14sp"
+                        android:textStyle="bold"
+                        android:layout_marginBottom="8dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@+id/plus_kcal"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toEndOf="@+id/minus_kcal" />
+
+                <TextView
+                        android:id="@+id/actual_weight"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@{viewModel.foodKcal}"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        android:layout_marginTop="8dp"
+                        app:layout_constraintBottom_toTopOf="@+id/food_kcal_title"
+                        app:layout_constraintEnd_toEndOf="@+id/food_kcal_title"
+                        app:layout_constraintStart_toStartOf="@+id/food_kcal_title"
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:text="0" />
+
+                <TextView
+                        android:id="@+id/plus_kcal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="18sp"
+                        android:text="@string/plus"
+                        app:layout_constraintBottom_toBottomOf="@+id/actual_weight"
+                        app:layout_constraintEnd_toStartOf="@+id/exercise_kcal_title"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toEndOf="@+id/food_kcal_title"
+                        app:layout_constraintTop_toTopOf="@+id/actual_weight" />
+
+                <TextView
+                        android:id="@+id/exercise_kcal_title"
+                        android:text="@string/exercise"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="14sp"
+                        android:textStyle="bold"
+                        android:layout_marginBottom="8dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@+id/equal"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toEndOf="@+id/plus_kcal" />
+
+                <TextView
+                        android:id="@+id/remaining_kcal_title"
+                        android:text="@string/remaining"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="14sp"
+                        android:textStyle="bold"
+                        android:layout_marginBottom="8dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toEndOf="@+id/equal" />
+
+                <TextView
+                        android:id="@+id/exercise_kcal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@{viewModel.exerciseKcal}"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        android:layout_marginTop="8dp"
+                        app:layout_constraintBottom_toTopOf="@+id/exercise_kcal_title"
+                        app:layout_constraintEnd_toEndOf="@+id/exercise_kcal_title"
+                        app:layout_constraintStart_toStartOf="@+id/exercise_kcal_title"
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:text="0" />
+
+                <TextView
+                        android:id="@+id/remaining_kcal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@{viewModel.remainingKcal}"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        android:layout_marginTop="8dp"
+                        app:caloriesStatus="@{viewModel.remainingKcal}"
+                        app:layout_constraintBottom_toTopOf="@+id/remaining_kcal_title"
+                        app:layout_constraintEnd_toEndOf="@+id/remaining_kcal_title"
+                        app:layout_constraintStart_toStartOf="@+id/remaining_kcal_title"
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:text="2410" />
+
+                <TextView
+                        android:id="@+id/equal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/equal"
+                        android:textSize="24sp"
+                        app:layout_constraintBottom_toBottomOf="@+id/exercise_kcal"
+                        app:layout_constraintEnd_toStartOf="@+id/remaining_kcal_title"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toEndOf="@+id/exercise_kcal_title"
+                        app:layout_constraintTop_toTopOf="@+id/exercise_kcal" />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <ScrollView
+                android:id="@+id/scrollView4"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginTop="8dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/card_progress"
+                app:layout_constraintVertical_bias="0.0">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/card_breakfast"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="4dp"
+                        android:layout_marginEnd="4dp"
+                        android:layout_marginBottom="4dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.0">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/diary_breakfast_layout"
+                            android:layout_width="match_parent"
+                            android:background="@color/cardview_background"
+                            android:layout_height="wrap_content">
+
+                        <TextView
+                                android:id="@+id/breakfast_title"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/breakfast"
+                                android:textAppearance="?attr/textAppearanceHeadline6"
+                                android:layout_marginStart="8dp"
+                                android:textSize="18sp"
+                                android:textStyle="bold"
+                                android:layout_marginTop="8dp"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+
+                        <TextView
+                                android:id="@+id/kcal_total_breakfast"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textAppearance="?attr/textAppearanceCaption"
+                                android:layout_marginEnd="8dp"
+                                android:textStyle="bold"
+                                android:text="@{viewModel.breakfastKcal}"
+                                android:textSize="16sp"
+                                app:layout_constraintBottom_toBottomOf="@+id/breakfast_title"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintTop_toTopOf="@+id/breakfast_title"
+                                tools:text="200" />
+
+                        <View
+                                android:id="@+id/divider_breakfast"
+                                android:layout_width="0dp"
+                                android:layout_height="2dp"
+                                android:layout_marginTop="8dp"
+                                android:background="?android:attr/listDivider"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintHorizontal_bias="0.5"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@+id/breakfast_title" />
+
+                        <androidx.recyclerview.widget.RecyclerView
+                                android:id="@+id/food_list_breakfast"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="4dp"
+                                app:layoutManager="androidx.recyclerview.widget.StaggeredGridLayoutManager"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintHorizontal_bias="1.0"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@+id/divider_breakfast"
+                                app:layout_constraintVertical_bias="0.0"
+                                app:listDataFood="@{viewModel.foodsBreakfast}"
+                                app:spanCount="1"
+                                tools:listitem="@layout/list_diary_item" />
+
+                        <com.google.android.material.button.MaterialButton
+                                android:id="@+id/add_food_breakfast"
+                                style="?attr/borderlessButtonStyle"
+                                android:onClick='@{(v) -> viewModel.addFood(v,"1")}'
+                                android:layout_width="wrap_content"
+                                android:layout_height="35dp"
+                                android:text="@string/add_food"
+                                android:layout_marginEnd="8dp"
+                                android:paddingTop="0dp"
+                                android:paddingBottom="8dp"
+                                app:buttonStatus="@{viewModel.status}"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintHorizontal_bias="0.0"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@+id/food_list_breakfast" />
+
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+                <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/card_lunch"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="4dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/card_breakfast"
+                        app:layout_constraintVertical_bias="0.0">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/diary_lunch_layout"
+                            android:layout_width="match_parent"
+                            android:background="@color/cardview_background"
+                            android:layout_height="wrap_content">
+
+                        <TextView
+                                android:id="@+id/lunch_title"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/lunch"
+                                android:textAppearance="?attr/textAppearanceHeadline6"
+                                android:layout_marginStart="8dp"
+                                android:textSize="18sp"
+                                android:textStyle="bold"
+                                android:layout_marginTop="8dp"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                                android:id="@+id/kcal_total_lunch"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textAppearance="?attr/textAppearanceCaption"
+                                android:layout_marginEnd="8dp"
+                                android:textStyle="bold"
+                                android:text="@{viewModel.lunchKcal}"
+                                android:textSize="16sp"
+                                app:layout_constraintBottom_toBottomOf="@+id/lunch_title"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintTop_toTopOf="@+id/lunch_title"
+                                tools:text="200" />
+
+                        <View
+                                android:id="@+id/divider_lunch"
+                                android:layout_width="0dp"
+                                android:layout_height="2dp"
+                                android:layout_marginTop="8dp"
+                                android:background="?android:attr/listDivider"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintHorizontal_bias="0.5"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@+id/lunch_title" />
+
+                        <androidx.recyclerview.widget.RecyclerView
+                                android:id="@+id/food_list_lunch"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="4dp"
+                                app:layoutManager="androidx.recyclerview.widget.StaggeredGridLayoutManager"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintHorizontal_bias="1.0"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@+id/divider_lunch"
+                                app:layout_constraintVertical_bias="0.0"
+                                app:listDataFood="@{viewModel.foodsLunch}"
+                                app:spanCount="1"
+                                tools:listitem="@layout/list_diary_item" />
+
+                        <com.google.android.material.button.MaterialButton
+                                android:id="@+id/add_food_lunch"
+                                style="?attr/borderlessButtonStyle"
+                                android:onClick='@{(v) -> viewModel.addFood(v,"2")}'
+                                android:layout_width="wrap_content"
+                                android:layout_height="35dp"
+                                android:text="@string/add_food"
+                                android:layout_marginEnd="8dp"
+                                android:paddingTop="0dp"
+                                android:paddingBottom="8dp"
+                                app:buttonStatus="@{viewModel.status}"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintHorizontal_bias="0.0"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@+id/food_list_lunch" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+                <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/card_dinner"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="4dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/card_lunch"
+                        app:layout_constraintVertical_bias="0.0">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/diary_dinner_layout"
+                            android:layout_width="match_parent"
+                            android:background="@color/cardview_background"
+                            android:layout_height="wrap_content">
+
+                        <TextView
+                                android:id="@+id/dinner_title"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/dinner"
+                                android:textAppearance="?attr/textAppearanceHeadline6"
+                                android:layout_marginStart="8dp"
+                                android:textSize="18sp"
+                                android:textStyle="bold"
+                                android:layout_marginTop="8dp"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                                android:id="@+id/kcal_total_dinner"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textAppearance="?attr/textAppearanceCaption"
+                                android:layout_marginEnd="8dp"
+                                android:textStyle="bold"
+                                android:text="@{viewModel.dinnerKcal}"
+                                android:textSize="16sp"
+                                app:layout_constraintBottom_toBottomOf="@+id/dinner_title"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintTop_toTopOf="@+id/dinner_title"
+                                tools:text="200" />
+
+                        <View
+                                android:id="@+id/divider_dinner"
+                                android:layout_width="0dp"
+                                android:layout_height="2dp"
+                                android:layout_marginTop="8dp"
+                                android:background="?android:attr/listDivider"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintHorizontal_bias="0.5"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@+id/dinner_title" />
+
+                        <androidx.recyclerview.widget.RecyclerView
+                                android:id="@+id/food_list_dinner"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="4dp"
+                                app:layoutManager="androidx.recyclerview.widget.StaggeredGridLayoutManager"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintHorizontal_bias="1.0"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@+id/divider_dinner"
+                                app:layout_constraintVertical_bias="0.0"
+                                app:listDataFood="@{viewModel.foodsDinner}"
+                                app:spanCount="1"
+                                tools:listitem="@layout/list_diary_item" />
+
+                        <com.google.android.material.button.MaterialButton
+                                android:id="@+id/add_food_dinner"
+                                style="?attr/borderlessButtonStyle"
+                                android:onClick='@{(v) -> viewModel.addFood(v,"3")}'
+                                android:layout_width="wrap_content"
+                                android:layout_height="35dp"
+                                android:text="@string/add_food"
+                                android:layout_marginEnd="8dp"
+                                android:paddingTop="0dp"
+                                android:paddingBottom="8dp"
+                                app:buttonStatus="@{viewModel.status}"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintHorizontal_bias="0.0"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@+id/food_list_dinner" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+                <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/card_snack"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="4dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/card_dinner"
+                        app:layout_constraintVertical_bias="0.0">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/diary_snack_layout"
+                            android:layout_width="match_parent"
+                            android:background="@color/cardview_background"
+                            android:layout_height="wrap_content">
+
+                        <TextView
+                                android:id="@+id/snack_title"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/snack"
+                                android:textAppearance="?attr/textAppearanceHeadline6"
+                                android:layout_marginStart="8dp"
+                                android:textSize="18sp"
+                                android:textStyle="bold"
+                                android:layout_marginTop="8dp"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                                android:id="@+id/kcal_total_snack"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textAppearance="?attr/textAppearanceCaption"
+                                android:layout_marginEnd="8dp"
+                                android:textStyle="bold"
+                                android:text="@{viewModel.snackKcal}"
+                                android:textSize="16sp"
+                                app:layout_constraintBottom_toBottomOf="@+id/snack_title"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintTop_toTopOf="@+id/snack_title"
+                                tools:text="200" />
+
+                        <View
+                                android:id="@+id/divider_snack"
+                                android:layout_width="0dp"
+                                android:layout_height="2dp"
+                                android:layout_marginTop="8dp"
+                                android:background="?android:attr/listDivider"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintHorizontal_bias="0.5"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@+id/snack_title" />
+
+                        <androidx.recyclerview.widget.RecyclerView
+                                android:id="@+id/food_list_snack"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="4dp"
+                                app:layoutManager="androidx.recyclerview.widget.StaggeredGridLayoutManager"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintHorizontal_bias="1.0"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@+id/divider_snack"
+                                app:layout_constraintVertical_bias="0.0"
+                                app:listDataFood="@{viewModel.foodsSnack}"
+                                app:spanCount="1"
+                                tools:listitem="@layout/list_diary_item" />
+
+                        <com.google.android.material.button.MaterialButton
+                                android:id="@+id/add_food_snack"
+                                style="?attr/borderlessButtonStyle"
+                                android:onClick='@{(v) -> viewModel.addFood(v,"4")}'
+                                android:layout_width="wrap_content"
+                                android:layout_height="35dp"
+                                android:text="@string/add_food"
+                                android:layout_marginEnd="8dp"
+                                android:paddingTop="0dp"
+                                android:paddingBottom="8dp"
+                                app:buttonStatus="@{viewModel.status}"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintHorizontal_bias="0.0"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@+id/food_list_snack" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+                <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/card_exercise"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginStart="4dp"
+                        android:layout_marginEnd="4dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/card_snack"
+                        app:layout_constraintVertical_bias="0.0">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/diary_exercise_layout"
+                            android:layout_width="match_parent"
+                            android:background="@color/cardview_background"
+                            android:layout_height="wrap_content">
+
+                        <TextView
+                                android:id="@+id/exercise_title"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/exercises"
+                                android:textAppearance="?attr/textAppearanceHeadline6"
+                                android:layout_marginStart="8dp"
+                                android:textSize="18sp"
+                                android:textStyle="bold"
+                                android:layout_marginTop="8dp"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                                android:id="@+id/kcal_total_exercise"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textAppearance="?attr/textAppearanceCaption"
+                                android:layout_marginEnd="8dp"
+                                android:textStyle="bold"
+                                android:text="@{viewModel.exerciseKcal}"
+                                android:textSize="16sp"
+                                app:layout_constraintBottom_toBottomOf="@+id/exercise_title"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintTop_toTopOf="@+id/exercise_title"
+                                tools:text="200" />
+
+                        <View
+                                android:id="@+id/divider_exercise"
+                                android:layout_width="0dp"
+                                android:layout_height="2dp"
+                                android:layout_marginTop="8dp"
+                                android:background="?android:attr/listDivider"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintHorizontal_bias="0.5"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@+id/exercise_title" />
+
+                        <androidx.recyclerview.widget.RecyclerView
+                                android:id="@+id/exercise_list"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="4dp"
+                                app:layoutManager="androidx.recyclerview.widget.StaggeredGridLayoutManager"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@+id/divider_exercise"
+                                app:layout_constraintVertical_bias="0.0"
+                                app:listDataExercise="@{viewModel.sports}"
+                                app:spanCount="1"
+                                tools:listitem="@layout/list_diary_item" />
+
+                        <com.google.android.material.button.MaterialButton
+                                android:id="@+id/add_exercise"
+                                style="?attr/borderlessButtonStyle"
+                                android:onClick='@{(v) -> viewModel.addExercise(v)}'
+                                android:layout_width="wrap_content"
+                                android:layout_height="35dp"
+                                android:text="@string/add_exercise"
+                                android:layout_marginEnd="8dp"
+                                android:paddingTop="0dp"
+                                android:paddingBottom="8dp"
+                                app:buttonStatus="@{viewModel.status}"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintHorizontal_bias="0.0"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@+id/exercise_list" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </ScrollView>
+
+        <ProgressBar
+                android:id="@+id/loading_spinner"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="8dp"
+                android:visibility="gone"
+                android:layout_marginBottom="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="parent"
+                app:layout_constraintStart_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:loadingStatus="@{viewModel.status}"
+                tools:visibility="visible" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

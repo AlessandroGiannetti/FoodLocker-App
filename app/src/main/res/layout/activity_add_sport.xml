@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        tools:context="com.example.android.navigation.SearchSportFragment">
+
+    <data>
+
+        <variable
+                name="viewModel"
+                type="com.letsbuildthatapp.foodlocker.ui.diary.addSport.AddSportViewModel" />
+    </data>
+
+    <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:layout_editor_absoluteX="1dp"
+            tools:layout_editor_absoluteY="1dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+            <TextView
+                    android:id="@+id/title_exercise"
+                    android:text="@{viewModel.sport.name}"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:textSize="18sp"
+                    app:layout_constraintBottom_toTopOf="@id/card"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:text="Running (1.2 mile ph)" />
+
+            <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/card"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="16dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/title_exercise">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/profile_layout_card"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/cardview_background">
+
+
+                    <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/min_exercise"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            app:error="@{viewModel.hourError}"
+                            app:errorEnabled="true"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:startIconDrawable="@drawable/ic_fitness_center_black_24dp">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/minutes_exercise"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:hint="@string/minutes_of_exercise"
+                                android:inputType="number" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <TextView
+                            android:id="@+id/calories_calc"
+                            android:text="@{viewModel.calories}"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:layout_marginEnd="8dp"
+                            android:textSize="18sp"
+                            android:fontFamily="sans-serif-light"
+                            android:layout_marginBottom="8dp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/min_exercise"
+                            tools:text="200" />
+
+                    <TextView
+                            android:id="@+id/textView6"
+                            android:text="@string/calories"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="4dp"
+                            android:textSize="18sp"
+                            android:fontFamily="sans-serif-light"
+                            android:drawableStart="@drawable/ic_progress_black_24dp"
+                            android:drawableTint="@color/material_on_background_emphasis_medium"
+                            app:layout_constraintBottom_toBottomOf="@+id/calories_calc"
+                            app:layout_constraintEnd_toStartOf="@+id/calories_calc"
+                            app:layout_constraintTop_toTopOf="@+id/calories_calc" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+
+</layout>

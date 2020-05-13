@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/writePostFragment"
+        tools:context="com.example.android.navigation.WritePostFragment">
+
+    <data>
+
+        <variable
+                name="viewModel"
+                type="com.letsbuildthatapp.foodlocker.ui.home.HomeViewModel" />
+    </data>
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        <com.google.android.material.card.MaterialCardView
+                android:id="@+id/card"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/cardview_background">
+
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/imageview_profile_post"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="8dp"
+                        app:layout_constraintEnd_toStartOf="@+id/username_post"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:srcCompat="@android:drawable/btn_dialog"
+                        tools:srcCompat="@drawable/ic_account_circle_black_24dp" />
+
+                <TextView
+                        android:id="@+id/username_post"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="@{viewModel.username}"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginStart="8dp"
+                        android:textStyle="bold"
+                        android:textSize="18sp"
+                        android:padding="4dp"
+                        app:layout_constraintBottom_toBottomOf="@+id/imageview_profile_post"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/imageview_profile_post"
+                        app:layout_constraintTop_toTopOf="@+id/imageview_profile_post"
+                        tools:text="username of post user" />
+
+                <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/content_post"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginEnd="8dp"
+                        android:textSize="15sp"
+                        android:text="@={viewModel.content}"
+                        android:hint="@string/what_are_you_thinking_about"
+                        android:importantForAutofill="no"
+                        android:imeOptions="actionDone"
+                        android:inputType="textMultiLine"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/imageview_profile_post" />
+
+                <ImageView
+                        android:id="@+id/selectphoto_imageview_post"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:scaleType="fitCenter"
+                        android:adjustViewBounds="true"
+                        android:contentDescription="@string/image_post"
+                        android:maxHeight="250dp"
+                        android:layout_marginTop="8dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/content_post"
+                        tools:srcCompat="@drawable/ic_friendship" />
+
+                <Button
+                        android:id="@+id/selectphoto_button_post"
+                        style="@style/Widget.MaterialComponents.Button.TextButton"
+                        android:layout_width="88dp"
+                        android:layout_height="34dp"
+                        android:textStyle="bold"
+                        android:textSize="12sp"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="8dp"
+                        android:text="@string/image"
+                        android:textColor="@color/white_50"
+                        android:layout_marginBottom="8dp"
+                        app:icon="@drawable/ic_photo_library_black_24dp"
+                        app:iconTint="@color/white_50"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/selectphoto_imageview_post" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

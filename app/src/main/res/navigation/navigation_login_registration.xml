@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation_login_registration"
+    app:startDestination="@id/loginFragment">
+
+    <fragment
+            android:id="@+id/loginFragment"
+            android:name="com.letsbuildthatapp.foodlocker.ui.login.LoginFragment"
+            android:label="@string/login"
+            tools:layout="@layout/fragment_login">
+        <action
+                android:id="@+id/action_loginFragment_to_registrationFragment"
+                app:destination="@id/registrationFragment"
+                app:enterAnim="@anim/fragment_close_enter"
+                app:exitAnim="@anim/fragment_close_exit"
+                tools:ignore="PrivateResource" />
+        <action
+                android:id="@+id/action_loginFragment_to_loggedActivity"
+                app:destination="@id/loggedActivity"
+                app:enterAnim="@anim/fragment_fade_enter"
+                app:exitAnim="@anim/fragment_close_exit"
+                tools:ignore="PrivateResource" />
+        <action
+                android:id="@+id/action_loginFragment_to_extraInfoRegistration"
+                app:destination="@id/extraInfoRegistration"
+                app:enterAnim="@anim/fragment_fade_enter"
+                app:exitAnim="@anim/fragment_fade_exit" />
+    </fragment>
+    <fragment
+            android:id="@+id/registrationFragment"
+            android:name="com.letsbuildthatapp.foodlocker.ui.registration.RegistrationFragment"
+            android:label="Create An Account"
+            tools:layout="@layout/fragment_registration">
+        <action
+                android:id="@+id/action_registrationFragment_to_loginFragment"
+                app:destination="@id/loginFragment"
+                app:enterAnim="@anim/fragment_close_enter"
+                app:exitAnim="@anim/fragment_close_exit"
+                tools:ignore="PrivateResource" />
+        <action
+                android:id="@+id/action_registrationFragment_to_extraInfoRegistration"
+                app:destination="@id/extraInfoRegistration"
+                app:enterAnim="@anim/fragment_close_enter"
+                app:exitAnim="@anim/fragment_fade_exit"
+                tools:ignore="PrivateResource" />
+    </fragment>
+    <activity
+            android:id="@+id/loggedActivity"
+            android:name="com.letsbuildthatapp.foodlocker.ui.activity.LoggedActivity"
+            android:label="FoodLocker"
+            tools:layout="@layout/activity_logged" />
+    <fragment
+            android:id="@+id/extraInfoRegistration"
+            android:name="com.letsbuildthatapp.foodlocker.ui.registration.ExtraInfoRegistrationFragment"
+            android:label="let's get to know each other"
+            tools:layout="@layout/fragment_extra_info_registration">
+        <action
+                android:id="@+id/action_extraInfoRegistration_to_loggedActivity"
+                app:destination="@id/loggedActivity"
+                app:enterAnim="@anim/fragment_fade_enter"
+                app:exitAnim="@anim/fragment_close_exit"
+                tools:ignore="PrivateResource" />
+    </fragment>
+</navigation>
